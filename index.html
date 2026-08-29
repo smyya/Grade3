@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Grade 3 - Teacher Sumaia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon: #8B1E20;
+    --paper: #f8f1e0;
+    --ink: #33291c;
+    --cream-dim: #e7c9a9;
+    --navy: #2c4870;
+    --mustard: #d69b2b;
+    --forest: #3f7857;
+    --teal: #2a8080;
+    --plum: #7a4a8a;
+    --rust: #c0602f;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: var(--maroon);
+    background-image:
+      radial-gradient(ellipse at 15% 8%, rgba(255,255,255,0.05), transparent 55%),
+      radial-gradient(ellipse at 85% 95%, rgba(0,0,0,0.12), transparent 55%);
+    color: var(--paper);
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrap{
+    max-width: 640px;
+    width: 100%;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(248, 241, 224, 0.12);
+    border: 1px solid rgba(248, 241, 224, 0.35);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin-bottom: 28px;
+  }
+
+  .badge .dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--mustard);
+  }
+
+  h1{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 7vw, 3.6rem);
+    line-height: 1.15;
+    margin: 0 0 6px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.18);
+  }
+
+  h1 .grade{
+    color: var(--mustard);
+  }
+
+  .teacher-name{
+    font-family: 'Patrick Hand', cursive;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    color: var(--paper);
+    margin: 10px 0 6px;
+  }
+
+  .teacher-name span{
+    color: var(--mustard);
+  }
+
+  .underline{
+    width: 90px;
+    height: 5px;
+    background: var(--mustard);
+    border-radius: 3px;
+    margin: 18px auto 30px;
+    opacity: 0.85;
+  }
+
+  .tagline{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--cream-dim);
+    max-width: 440px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .nav{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .nav a{
+    display: block;
+    text-decoration: none;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 16px 26px;
+    border-radius: 12px;
+    min-width: 190px;
+    border-bottom: 5px solid var(--mustard);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .nav a:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 9px 18px rgba(0,0,0,0.35);
+  }
+
+  .nav a .label{
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--maroon);
+    margin-bottom: 4px;
+  }
+
+  footer{
+    margin-top: 46px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+    color: var(--cream-dim);
+    opacity: 0.75;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Math <span class="grade">Grade 3</span></h1>
+  <div class="teacher-name">Teacher <span>Sumaia</span></div>
+
+  <div class="underline"></div>
+
+  <div class="tagline">A cozy corner for our classroom activities. Pick something below to get started.</div>
+
+  <div class="nav">
+    <a href="first-day-questions.html">
+      <span class="label">Activity</span>
+      Get to Know Me!
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
