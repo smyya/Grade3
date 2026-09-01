@@ -111,12 +111,13 @@
     line-height: 1.6;
   }
 
-  .nav{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
-  }
+.nav{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  margin-top: 8px;
+}
 
   .nav a{
     display: block;
@@ -175,12 +176,24 @@
     </a>
   </div>
   
-    <div class="nav">
+  <div class="nav">
+    <a href="Get-to-know-me.html">
+      <span class="label">Activity</span>
+      Get to Know Me!
+    </a>
     <a href="Matching.html">
       <span class="label">Activity</span>
       Match the Emoji!
     </a>
-  </div>
+    <a href="simon-says.html">
+      <span class="label">Activity</span>
+      Simon Says!
+    </a>
+    <a href="multiplication.html">
+      <span class="label">Activity</span>
+      multiplication!
+    </a>
+</div>
 </div>
 
 </body>
