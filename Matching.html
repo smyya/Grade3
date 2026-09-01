@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shape Match</title>
+<style>
+  :root{
+    --paper:#EFE9DD;
+    --ink:#1F2421;
+    --brick:#C1502E;
+    --teal:#2F6E6A;
+    --gold:#D9A441;
+    --plum:#6B4C6E;
+    --card-back:#2F6E6A;
+    --card-face:#F7F3E9;
+    --grid-gap:10px;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;
+    padding:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Trebuchet MS','Segoe UI',sans-serif;
+    min-height:100vh;
+  }
+  body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:28px 16px 60px;
+  }
+  .header{
+    width:100%;
+    max-width:720px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:6px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  h1{
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:700;
+    font-size:2.1rem;
+    margin:0;
+    letter-spacing:0.5px;
+    color:var(--ink);
+  }
+  h1 span{color:var(--brick);}
+  .stats{
+    display:flex;
+    gap:18px;
+    font-size:1rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .stat{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    line-height:1.15;
+  }
+  .stat b{font-size:1.35rem;font-family:Georgia,serif;}
+  .stat small{opacity:0.65;font-size:0.72rem;}
+  .subtitle{
+    width:100%;
+    max-width:720px;
+    margin:0 0 22px;
+    opacity:0.75;
+    font-size:0.95rem;
+  }
+  .board{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:var(--grid-gap);
+    width:100%;
+    max-width:720px;
+  }
+  @media (max-width:560px){
+    .board{grid-template-columns:repeat(4, 1fr);}
+  }
+  .card{
+    aspect-ratio:1/1;
+    perspective:800px;
+    cursor:pointer;
+  }
+  .card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transform-style:preserve-3d;
+    transition:transform 0.45s cubic-bezier(.4,.2,.2,1);
+  }
+  .card.flipped .card-inner,
+  .card.matched .card-inner{
+    transform:rotateY(180deg);
+  }
+  .card-face{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    backface-visibility:hidden;
+  }
+  .card-back{
+    background:var(--card-back);
+    background-image:
+      repeating-linear-gradient(45deg, rgba(255,255,255,0.045) 0 8px, transparent 8px 16px);
+    border:2px solid rgba(0,0,0,0.12);
+  }
+  .card-back::after{
+    content:"";
+    width:34%;
+    height:34%;
+    border-radius:50%;
+    border:2.5px solid rgba(247,243,233,0.55);
+  }
+  .card-front{
+    background:var(--card-face);
+    border:2px solid rgba(0,0,0,0.08);
+    transform:rotateY(180deg);
+  }
+  .card.matched .card-front{
+    background:#EFE4C8;
+    border-color:var(--gold);
+  }
+  .pic{
+    font-size:min(11vw, 3rem);
+    line-height:1;
+    user-select:none;
+  }
+  .card.matched{
+    animation:settle 0.4s ease;
+  }
+  @keyframes settle{
+    0%{transform:scale(1);}
+    35%{transform:scale(1.07);}
+    100%{transform:scale(1);}
+  }
+  .card:not(.flipped):not(.matched):hover .card-back{
+    border-color:rgba(217,164,65,0.6);
+  }
+
+  .footer-row{
+    width:100%;
+    max-width:720px;
+    display:flex;
+    justify-content:center;
+    margin-top:26px;
+  }
+  button.reset{
+    background:var(--brick);
+    color:var(--card-face);
+    border:none;
+    padding:11px 26px;
+    font-size:0.95rem;
+    font-family:inherit;
+    border-radius:7px;
+    cursor:pointer;
+    letter-spacing:0.3px;
+    transition:background 0.2s ease, transform 0.1s ease;
+  }
+  button.reset:hover{background:#a83f22;}
+  button.reset:active{transform:scale(0.97);}
+
+  .win-banner{
+    max-width:720px;
+    width:100%;
+    margin:18px 0 0;
+    padding:16px 20px;
+    background:var(--gold);
+    color:var(--ink);
+    border-radius:8px;
+    font-size:1.05rem;
+    text-align:center;
+    display:none;
+    font-family:Georgia,serif;
+  }
+  .win-banner.show{display:block;}
+
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .card-inner, .card.matched{transition:none;animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Shape <span>Match</span></h1>
+  <div class="stats">
+    <div class="stat"><b id="moves">0</b><small>MOVES</small></div>
+    <div class="stat"><b id="timer">0:00</b><small>TIME</small></div>
+  </div>
+</div>
+<p class="subtitle">Flip two cards at a time. Find all 10 matching pairs of shapes.</p>
+
+<div class="board" id="board" role="grid" aria-label="Shape matching game board"></div>
+
+<div class="win-banner" id="winBanner"></div>
+
+<div class="footer-row">
+  <button class="reset" id="resetBtn">New Game</button>
+</div>
+
+<script>
+(function(){
+  // 10 picture cards (emoji render crisply at any size with no network dependency)
+  const PICS = ['🦊','🐙','🍉','🌵','🚀','🦋','🍄','🐬','🌻','🍕'];
+
+  const board = document.getElementById('board');
+  const movesEl = document.getElementById('moves');
+  const timerEl = document.getElementById('timer');
+  const winBanner = document.getElementById('winBanner');
+  const resetBtn = document.getElementById('resetBtn');
+
+  let flipped = [];
+  let matchedCount = 0;
+  let moves = 0;
+  let lock = false;
+  let seconds = 0;
+  let timerInterval = null;
+  let started = false;
+
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
+  }
+
+  function formatTime(s){
+    const m = Math.floor(s/60);
+    const sec = s%60;
+    return m+':'+String(sec).padStart(2,'0');
+  }
+
+  function startTimerIfNeeded(){
+    if(started) return;
+    started = true;
+    timerInterval = setInterval(()=>{
+      seconds++;
+      timerEl.textContent = formatTime(seconds);
+    },1000);
+  }
+
+  function stopTimer(){
+    clearInterval(timerInterval);
+    started = false;
+  }
+
+  function buildDeck(){
+    let deck = [];
+    PICS.forEach((pic, idx)=>{
+      deck.push({picIdx:idx, pic});
+      deck.push({picIdx:idx, pic});
+    });
+    return shuffle(deck);
+  }
+
+  function render(){
+    board.innerHTML = '';
+    const deck = buildDeck();
+    deck.forEach((item, i)=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('role','gridcell');
+      card.setAttribute('tabindex','0');
+      card.setAttribute('aria-label','Hidden shape card');
+      card.dataset.shape = item.picIdx;
+      card.dataset.index = i;
+
+      const inner = document.createElement('div');
+      inner.className = 'card-inner';
+
+      const back = document.createElement('div');
+      back.className = 'card-face card-back';
+
+      const front = document.createElement('div');
+      front.className = 'card-face card-front';
+      front.innerHTML = `<span class="pic">${item.pic}</span>`;
+
+      inner.appendChild(back);
+      inner.appendChild(front);
+      card.appendChild(inner);
+      board.appendChild(card);
+
+      card.addEventListener('click', ()=>handleFlip(card));
+      card.addEventListener('keydown', (e)=>{
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault();
+          handleFlip(card);
+        }
+      });
+    });
+  }
+
+  function handleFlip(card){
+    if(lock) return;
+    if(card.classList.contains('flipped') || card.classList.contains('matched')) return;
+    if(flipped.length===2) return;
+
+    startTimerIfNeeded();
+    card.classList.add('flipped');
+    flipped.push(card);
+
+    if(flipped.length===2){
+      moves++;
+      movesEl.textContent = moves;
+      lock = true;
+      const [a,b] = flipped;
+      if(a.dataset.shape === b.dataset.shape){
+        setTimeout(()=>{
+          a.classList.add('matched');
+          b.classList.add('matched');
+          a.classList.remove('flipped');
+          b.classList.remove('flipped');
+          flipped = [];
+          lock = false;
+          matchedCount += 2;
+          if(matchedCount === 20){
+            finishGame();
+          }
+        }, 350);
+      } else {
+        setTimeout(()=>{
+          a.classList.remove('flipped');
+          b.classList.remove('flipped');
+          flipped = [];
+          lock = false;
+        }, 800);
+      }
+    }
+  }
+
+  function finishGame(){
+    stopTimer();
+    winBanner.textContent = `You matched all 10 pairs in ${moves} moves and ${formatTime(seconds)}.`;
+    winBanner.classList.add('show');
+  }
+
+  function newGame(){
+    flipped = [];
+    matchedCount = 0;
+    moves = 0;
+    seconds = 0;
+    lock = false;
+    stopTimer();
+    movesEl.textContent = '0';
+    timerEl.textContent = '0:00';
+    winBanner.classList.remove('show');
+    render();
+  }
+
+  resetBtn.addEventListener('click', newGame);
+  newGame();
+})();
+</script>
+
+</body>
+</html>
