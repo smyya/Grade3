@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add & Subtract Whack - Teacher Sumaia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-1: #FDECF3;
+    --bg-2: #E9F6F0;
+    --paper: #FFFDFB;
+    --ink: #5B4B6F;
+    --muted: #9C8AB0;
+    --butter: #F7CE79;
+    --mint: #93D9B5;
+    --sky: #A6D8E8;
+    --coral: #F5A6A0;
+    --lavender: #CBB2E6;
+    --line: #F0D9E6;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    color: var(--ink);
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px;
+  }
+
+  .wrap{
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 40px;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 18px;
+    box-shadow: 0 4px 10px rgba(203, 178, 230, 0.25);
+  }
+  .badge .dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--butter);
+  }
+
+  h1{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 6vw, 2.7rem);
+    line-height: 1.15;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  h1 .accent{ color: var(--coral); }
+
+  .sub{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+
+  /* scoreboard */
+  .board{
+    display:flex;
+    justify-content:center;
+    gap: 14px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .pip{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 12px;
+    padding: 10px 18px;
+    min-width: 92px;
+    border-bottom: 4px solid var(--butter);
+    box-shadow: 0 5px 12px rgba(203, 178, 230, 0.28);
+  }
+  .pip b{
+    display:block;
+    font-family:'Baloo 2', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.1;
+  }
+  .pip small{
+    font-family:'Baloo 2', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.9;
+  }
+  .lives b{ letter-spacing: 2px; }
+
+  /* question panel */
+  .question-panel{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 16px 20px 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 18px rgba(203, 178, 230, 0.3);
+    border-bottom: 5px solid var(--butter);
+  }
+  #question{
+    font-family:'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    color: var(--coral);
+    margin: 0 0 10px;
+  }
+  .timerbar-track{
+    height: 10px;
+    background: var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .timerbar-fill{
+    height: 100%;
+    width: 100%;
+    background: var(--mint);
+    border-radius: 6px;
+    transition: width 0.1s linear, background 0.3s ease;
+    transform-origin: left;
+  }
+
+  /* mole field */
+  .field{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .hole{
+    position: relative;
+    aspect-ratio: 1 / 0.95;
+    background: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: default;
+  }
+  .mole-btn{
+    position: absolute;
+    left: 50%;
+    bottom: -100%;
+    transform: translateX(-50%);
+    width: 78%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    font-size: 1.35rem;
+    cursor: pointer;
+    box-shadow: 0 5px 0 rgba(203, 178, 230, 0.5), 0 8px 14px rgba(203, 178, 230, 0.35);
+    transition: bottom 0.28s cubic-bezier(.3,1.4,.4,1), background 0.15s ease;
+  }
+  .mole-btn.up{ bottom: 8%; }
+  .mole-btn.correct{ background: var(--mint); }
+  .mole-btn.wrong{
+    background: var(--coral);
+    animation: shake 0.35s ease;
+  }
+  .mole-btn:disabled{ cursor: default; }
+  @keyframes shake{
+    0%,100%{ transform: translateX(-50%) rotate(0); }
+    25%{ transform: translateX(-50%) rotate(-8deg); }
+    75%{ transform: translateX(-50%) rotate(8deg); }
+  }
+
+  .status{
+    min-height: 26px;
+    font-family:'Patrick Hand', cursive;
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .status.win{ color: var(--coral); }
+
+  .op-choice{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .op-btn{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    background: var(--paper);
+    color: var(--muted);
+    border: 2px solid var(--line);
+    padding: 9px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .op-btn:hover{ border-color: var(--lavender); }
+  .op-btn.selected{
+    background: var(--lavender);
+    color: #4A3B5C;
+    border-color: var(--lavender);
+  }
+  .op-btn:disabled{
+    opacity: 0.55;
+    cursor: default;
+  }
+
+  button.action{
+    background: var(--butter);
+    color: var(--ink);
+    border: none;
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    padding: 13px 30px;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(203, 178, 230, 0.35);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  button.action:hover{ transform: translateY(-2px); }
+  button.action:active{ transform: translateY(0); }
+
+  footer{
+    margin-top: 30px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.95rem;
+    color: var(--muted);
+    opacity: 0.85;
+  }
+
+  @media (max-width: 420px){
+    .field{ gap: 10px; }
+    .mole-btn{ font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="badge"><span class="dot"></span>Math Grade 3</div>
+  <h1>Add & Subtract <span class="accent">Whack</span></h1>
+  <p class="sub">You've got 30 seconds — whack as many right answers as you can!</p>
+
+  <div class="op-choice" id="opChoice">
+    <button class="op-btn selected" data-op="add" type="button">Addition</button>
+    <button class="op-btn" data-op="sub" type="button">Subtraction</button>
+    <button class="op-btn" data-op="mix" type="button">Mix</button>
+  </div>
+
+  <div class="board">
+    <div class="pip"><b id="score">0</b><small>Correct</small></div>
+    <div class="pip"><b id="timeLeftPip">30</b><small>Seconds Left</small></div>
+    <div class="pip"><b id="best">0</b><small>Best</small></div>
+  </div>
+
+  <div class="question-panel">
+    <p id="question">Press start to play!</p>
+    <div class="timerbar-track"><div class="timerbar-fill" id="timerFill"></div></div>
+  </div>
+
+  <div class="field" id="field"></div>
+
+  <p class="status" id="status">See how many you can answer correctly in 30 seconds.</p>
+
+  <button class="action" id="startBtn">Start</button>
+</div>
+
+<script>
+(function(){
+  const HOLES = 6;
+  const GAME_TIME_MS = 30000;
+  let operationMode = 'add';
+
+  const field = document.getElementById('field');
+  const questionEl = document.getElementById('question');
+  const timerFill = document.getElementById('timerFill');
+  const scoreEl = document.getElementById('score');
+  const timeLeftPip = document.getElementById('timeLeftPip');
+  const bestEl = document.getElementById('best');
+  const statusEl = document.getElementById('status');
+  const startBtn = document.getElementById('startBtn');
+
+  let holes = [];
+  let score = 0;
+  let best = 0;
+  let timerInterval = null;
+  let timeLeft = GAME_TIME_MS;
+  let accepting = false;
+  let currentAnswer = null;
+  let gameActive = false;
+
+  // build 6 holes with mole buttons once
+  for(let i=0;i<HOLES;i++){
+    const hole = document.createElement('div');
+    hole.className = 'hole';
+    const btn = document.createElement('button');
+    btn.className = 'mole-btn';
+    btn.disabled = true;
+    btn.addEventListener('click', ()=>handlePick(i, btn));
+    hole.appendChild(btn);
+    field.appendChild(hole);
+    holes.push(btn);
+  }
+
+  function randInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j = Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
+  }
+
+  function makeQuestion(){
+    const useSub = operationMode === 'sub' ? true
+                 : operationMode === 'add' ? false
+                 : Math.random() < 0.5; // mix
+    let a, b, answer, text;
+    if(useSub){
+      a = randInt(5, 18);
+      b = randInt(1, a);
+      answer = a - b;
+      text = `${a} − ${b} = ?`;
+    } else {
+      a = randInt(1, 12);
+      b = randInt(1, 12);
+      answer = a + b;
+      text = `${a} + ${b} = ?`;
+    }
+    return { text, answer };
+  }
+
+  function makeDistractors(answer, count){
+    const set = new Set();
+    while(set.size < count){
+      const offset = randInt(-6, 6);
+      const val = answer + offset;
+      if(val !== answer && val >= 0){
+        set.add(val);
+      }
+    }
+    return Array.from(set);
+  }
+
+  function loadQuestion(){
+    if(!gameActive) return;
+    const q = makeQuestion();
+    currentAnswer = q.answer;
+    questionEl.textContent = q.text;
+
+    const distractors = makeDistractors(q.answer, HOLES - 1);
+    const values = shuffle([q.answer, ...distractors]);
+
+    holes.forEach((btn, i)=>{
+      btn.textContent = values[i];
+      btn.dataset.value = values[i];
+      btn.classList.remove('correct','wrong');
+      btn.classList.add('up');
+      btn.disabled = false;
+    });
+
+    accepting = true;
+  }
+
+  function startGameTimer(){
+    clearInterval(timerInterval);
+    timeLeft = GAME_TIME_MS;
+    timerFill.style.width = '100%';
+    timerFill.style.background = 'var(--mint)';
+    const tick = 100;
+    timerInterval = setInterval(()=>{
+      timeLeft -= tick;
+      const pct = Math.max(0, (timeLeft / GAME_TIME_MS) * 100);
+      timerFill.style.width = pct + '%';
+      if(pct < 20) timerFill.style.background = 'var(--coral)';
+      else if(pct < 45) timerFill.style.background = 'var(--butter)';
+      const secondsLeft = Math.max(0, Math.ceil(timeLeft / 1000));
+      timeLeftPip.textContent = secondsLeft;
+      if(timeLeft <= 0){
+        clearInterval(timerInterval);
+        endGame();
+      }
+    }, tick);
+  }
+
+  function retractAll(){
+    holes.forEach(btn=>{
+      btn.classList.remove('up');
+      btn.disabled = true;
+    });
+  }
+
+  function handlePick(i, btn){
+    if(!accepting || !gameActive) return;
+    const val = parseInt(btn.dataset.value, 10);
+    if(val === currentAnswer){
+      accepting = false;
+      btn.classList.add('correct');
+      score++;
+      scoreEl.textContent = score;
+      statusEl.textContent = 'Whacked it! Nice work.';
+      retractAll();
+      setTimeout(loadQuestion, 350);
+    } else {
+      btn.classList.add('wrong');
+      setTimeout(()=>btn.classList.remove('wrong'), 350);
+      statusEl.textContent = 'Not quite — try another hole!';
+    }
+  }
+
+  function endGame(){
+    gameActive = false;
+    accepting = false;
+    retractAll();
+    if(score > best){
+      best = score;
+      bestEl.textContent = best;
+    }
+    questionEl.textContent = "Time's up!";
+    statusEl.classList.add('win');
+    statusEl.textContent = `You whacked ${score} correct answer${score === 1 ? '' : 's'} in 30 seconds! 🎉`;
+    startBtn.textContent = 'Play again';
+    startBtn.disabled = false;
+    opButtons.forEach(b=>b.disabled = false);
+  }
+
+  function startGame(){
+    score = 0;
+    scoreEl.textContent = '0';
+    timeLeftPip.textContent = Math.round(GAME_TIME_MS/1000);
+    statusEl.classList.remove('win');
+    statusEl.textContent = '';
+    startBtn.disabled = true;
+    startBtn.textContent = 'Playing…';
+    opButtons.forEach(b=>b.disabled = true);
+    gameActive = true;
+    loadQuestion();
+    startGameTimer();
+  }
+
+  const opChoice = document.getElementById('opChoice');
+  const opButtons = Array.from(opChoice.querySelectorAll('.op-btn'));
+  opButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      if(gameActive) return;
+      operationMode = btn.dataset.op;
+      opButtons.forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  startBtn.addEventListener('click', startGame);
+})();
+</script>
+
+</body>
+</html>
