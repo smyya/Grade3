@@ -1,0 +1,1561 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Unit 3 Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800&family=Barlow+Condensed:ital,wght@1,700;1,800&family=DM+Mono:wght@500&display=swap">
+<style>
+  /* Layout: night-race broadcast. Header, one big game card, and a four-lane track that follows the player's car across every question. */
+  :root {
+    
+    --bg: #0b0d11;
+    --bg-line: #12151b;
+    --surface: #151820;
+    --surface-2: #1d212b;
+    --line: #2e3441;
+    --ink: #f4f6fa;
+    --ink-2: #a4aebf;
+    --accent: #e10600;
+    --accent-2: #a30400;
+    --accent-ink: #ffffff;
+    --accent-text: #ff6a5f;
+    --gold: #ffd21f;
+    --hl: #252a36;
+    --ok: #3ddc84;
+    --warn: #ffb020;
+    --bad: #ff5a50;
+    --track: #262b36;
+    --road: #2a2e37;
+    --road-2: #232730;
+    --paint: rgba(255, 255, 255, .42);
+    --shadow: 0 20px 44px -22px rgba(0, 0, 0, .85), 0 2px 0 rgba(255,255,255,.03) inset;
+    /* garage card */
+    --m-bg: #11141a; --m-bg-2: #1d222b; --m-ink: #f4f6fa; --m-ink-2: #a9b3c4; --m-line: #3a4150; --m-line-2: #5a6377;
+    --m-red: #ffd21f; --m-primary: #e10600; --m-primary-ink: #ffffff; --m-btn: #222733; --m-btn-line: #3d4556;
+    --m-chip: #2a303c; --m-pool: rgba(255, 255, 255, .04); --m-pool-hover: #2b3140; --m-table: #1b1f27; --m-table-hover: #272d39;
+    --m-input: #0b0d11; --m-share: #1a1e26; --m-ok: #3ddc84; --m-hint: #ffb020;
+    --font-ui: "Barlow", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-display: "Barlow Condensed", "Barlow", "Arial Narrow", system-ui, sans-serif;
+    --font-num: "DM Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #e7eaef; --bg-line: #dce0e7; --surface: #ffffff; --surface-2: #eff1f5; --line: #c9d0db;
+      --ink: #10131a; --ink-2: #566175; --accent: #d40d03; --accent-2: #9c0902; --accent-text: #c20c03;
+      --gold: #f0b000; --hl: #e8ecf3; --ok: #167a47; --warn: #a8630a; --bad: #c4281f; --track: #d8dee8;
+      --shadow: 0 18px 40px -22px rgba(20, 30, 50, .5), 0 2px 0 rgba(255,255,255,.6) inset;
+      --m-bg: #f5f7fa; --m-bg-2: #e6eaf0; --m-ink: #10131a; --m-ink-2: #566175; --m-line: #b8c0cd; --m-line-2: #98a2b5;
+      --m-red: #a54500; --m-primary: #d40d03; --m-btn: #ffffff; --m-btn-line: #b8c0cd;
+      --m-chip: #dde2ea; --m-pool: rgba(255, 255, 255, .7); --m-pool-hover: #fff3c4; --m-table: #cdd4de; --m-table-hover: #e0e5ec;
+      --m-input: #ffffff; --m-share: #e9edf3; --m-ok: #167a47; --m-hint: #94570a;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #e7eaef; --bg-line: #dce0e7; --surface: #ffffff; --surface-2: #eff1f5; --line: #c9d0db;
+    --ink: #10131a; --ink-2: #566175; --accent: #d40d03; --accent-2: #9c0902; --accent-text: #c20c03;
+    --gold: #f0b000; --hl: #e8ecf3; --ok: #167a47; --warn: #a8630a; --bad: #c4281f; --track: #d8dee8;
+    --shadow: 0 18px 40px -22px rgba(20, 30, 50, .5), 0 2px 0 rgba(255,255,255,.6) inset;
+    --m-bg: #f5f7fa; --m-bg-2: #e6eaf0; --m-ink: #10131a; --m-ink-2: #566175; --m-line: #b8c0cd; --m-line-2: #98a2b5;
+    --m-red: #a54500; --m-primary: #d40d03; --m-btn: #ffffff; --m-btn-line: #b8c0cd;
+    --m-chip: #dde2ea; --m-pool: rgba(255, 255, 255, .7); --m-pool-hover: #fff3c4; --m-table: #cdd4de; --m-table-hover: #e0e5ec;
+    --m-input: #ffffff; --m-share: #e9edf3; --m-ok: #167a47; --m-hint: #94570a;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden]:not([hidden=until-found i]) { display: none !important; }
+  body {
+    position: relative;
+    background-color: var(--bg);
+    background-image: repeating-linear-gradient(135deg, transparent 0 14px, var(--bg-line) 14px 16px);
+    color: var(--ink);
+    font: 17px/1.5 var(--font-ui);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 34px 44px;
+    transition: background-color .3s, color .3s;
+  }
+  /* chequered strip across the top */
+  body::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 16px;
+    background: conic-gradient(#0b0d11 25%, #f4f6fa 0 50%, #0b0d11 0 75%, #f4f6fa 0) 0 0 / 16px 16px; }
+  .wrap { max-width: 1080px; margin-inline: auto; display: flex; flex-direction: column; gap: 18px; }
+
+  /* header */
+  .top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .logo { flex: none; width: 64px; height: 44px; color: var(--accent); }
+  .logo svg { width: 100%; height: 100%; display: block; }
+  h1 { margin: 0; font: italic 800 clamp(1.8rem, 5vw, 2.7rem)/1 var(--font-display); letter-spacing: .02em; text-transform: uppercase; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--accent-text); }
+  .tools { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .btn { font: 700 1rem var(--font-ui); letter-spacing: .02em; padding: 12px 22px; min-height: 48px; border-radius: 6px 16px 6px 16px; border: 2px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer; box-shadow: 0 4px 0 var(--line); transition: transform .12s var(--ease), box-shadow .12s var(--ease), border-color .15s, filter .15s; }
+  .btn:hover:not(:disabled) { border-color: var(--ink-2); transform: translateY(-1px); box-shadow: 0 5px 0 var(--line); }
+  .btn:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 0 0 var(--line); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); box-shadow: 0 4px 0 var(--accent-2); text-transform: uppercase; font-weight: 800; letter-spacing: .06em; }
+  .btn.primary:hover:not(:disabled) { filter: brightness(1.12); box-shadow: 0 5px 0 var(--accent-2); border-color: var(--accent); }
+  .btn.primary:active:not(:disabled) { box-shadow: 0 0 0 var(--accent-2); }
+  .btn.small { min-height: 40px; padding: 6px 14px; font-size: .88rem; border-radius: 5px 12px 5px 12px; box-shadow: 0 3px 0 var(--line); }
+  .btn.big { min-height: 60px; padding: 14px 34px; font-size: 1.25rem; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  :is(button, summary, a):focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* cards */
+  .card { background: var(--surface); border: 2px solid var(--line); border-radius: 6px 30px 6px 30px; padding: clamp(18px, 4vw, 36px); display: flex; flex-direction: column; gap: 22px; box-shadow: var(--shadow); }
+  .card:not([hidden]) { animation: swoosh .55s var(--ease) both; }
+  @keyframes swoosh { from { opacity: 0; transform: translateX(36px) skewX(-6deg); } }
+  .kicker { margin: 0; align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--accent-ink); padding: 4px 16px 4px 12px; border-radius: 4px 14px 4px 14px; font: italic 800 1rem var(--font-display); letter-spacing: .1em; text-transform: uppercase; }
+  .kicker::before { content: ""; width: 12px; height: 12px; background: conic-gradient(#0b0d11 25%, #f4f6fa 0 50%, #0b0d11 0 75%, #f4f6fa 0) 0 0 / 6px 6px; }
+  .two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 5vw, 48px); align-items: start; }
+  @media (max-width: 780px) { .two { grid-template-columns: minmax(0, 1fr); } }
+  .col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  .help { margin: 0; color: var(--ink-2); font-size: 1rem; max-width: 46ch; }
+  .eqnote { margin: 0; color: var(--ink-2); max-width: 46ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .msg { margin: 0; min-height: 3em; font-size: 1.08rem; font-weight: 600; }
+  .msg[data-kind="ok"] { color: var(--ok); }
+  .msg[data-kind="hint"] { color: var(--warn); }
+  .msg[data-kind="info"] { color: var(--ink-2); font-weight: 500; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* ---------- start screen ---------- */
+  .hero { position: relative; overflow: hidden; border-radius: 6px 22px 6px 22px; background: var(--road); color: #fff; padding: clamp(20px, 4vw, 34px) clamp(18px, 4vw, 34px) 74px; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; inset: auto 0 0 0; height: 46px; z-index: -1; background: repeating-linear-gradient(90deg, var(--accent) 0 26px, #f4f6fa 26px 52px); }
+  .hero::after { content: ""; position: absolute; inset: auto 0 46px 0; height: 4px; z-index: -1; background: repeating-linear-gradient(90deg, transparent 0 26px, var(--paint) 26px 52px); }
+  .hero h2 { margin: 0; font: italic 800 clamp(2.6rem, 9vw, 5.4rem)/.92 var(--font-display); text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; text-shadow: 0 4px 0 rgba(0,0,0,.35); }
+  .hero h2 span { color: var(--gold); }
+  .hero p { margin: 12px 0 0; max-width: 40ch; color: #dfe4ee; font-size: 1.1rem; }
+  .hero .drift { position: absolute; bottom: 4px; left: 0; width: 100%; height: 46px; pointer-events: none; }
+  .hero .drift .car { position: absolute; bottom: 4px; width: 92px; animation: drive var(--t, 7s) linear infinite; animation-delay: var(--d, 0s); }
+  @keyframes drive { from { transform: translateX(-120px); } to { transform: translateX(min(1100px, 120vw)); } }
+  .car { display: block; }
+  .car svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+  .start-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 40px); align-items: start; }
+  @media (max-width: 820px) { .start-grid { grid-template-columns: minmax(0, 1fr); } }
+  .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .field > label, .field > .lbl { font: italic 700 1.05rem var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  #name { width: 100%; min-height: 62px; padding: 8px 18px; font: italic 700 1.8rem var(--font-display); letter-spacing: .03em; color: var(--ink); background: var(--surface-2); border: 3px solid var(--line); border-radius: 6px 18px 6px 18px; }
+  #name::placeholder { color: var(--ink-2); opacity: .6; }
+  #name:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 30%, transparent); }
+  .field.bad #name { border-color: var(--bad); animation: shake .35s; }
+  @keyframes shake { 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+  .err { margin: 0; min-height: 1.4em; color: var(--bad); font-weight: 700; }
+  .swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .swatch { position: relative; padding: 10px 6px 8px; border-radius: 5px 14px 5px 14px; border: 3px solid var(--line); background: var(--surface-2); cursor: pointer; color: var(--c); display: flex; flex-direction: column; align-items: center; gap: 4px; transition: transform .15s var(--ease), border-color .15s; font: 700 .8rem var(--font-ui); }
+  .swatch .car { width: 100%; max-width: 74px; }
+  .swatch .lbl { color: var(--ink-2); letter-spacing: .05em; text-transform: uppercase; }
+  .swatch:hover { transform: translateY(-3px); border-color: var(--ink-2); }
+  .swatch[aria-pressed="true"] { border-color: var(--gold); background: var(--hl); transform: translateY(-3px); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 30%, transparent); }
+  .swatch[aria-pressed="true"] .lbl { color: var(--ink); }
+  .how { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; color: var(--ink-2); font-size: 1rem; }
+  .how li { display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 10px; align-items: baseline; }
+  .how b { font: italic 800 1.15rem var(--font-display); color: var(--gold); letter-spacing: .03em; }
+  .board { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; counter-reset: pos; }
+  .board li { counter-increment: pos; display: grid; grid-template-columns: 2.2rem 54px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 6px 12px; border-radius: 4px 12px 4px 12px; background: var(--surface-2); font-weight: 700; }
+  .board li::before { content: counter(pos); font: italic 800 1.3rem var(--font-display); color: var(--gold); }
+  .board .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .board .pt { font: 500 1rem var(--font-num); }
+  .board .car { color: var(--c); }
+  .board-empty { color: var(--ink-2); padding: 14px; border: 2px dashed var(--line); border-radius: 6px 14px 6px 14px; margin: 0; }
+  .sect-h { margin: 0 0 8px; font: italic 800 1.3rem var(--font-display); letter-spacing: .1em; text-transform: uppercase; }
+
+  /* ---------- race HUD ---------- */
+  .hud { gap: 16px; padding-block: clamp(14px, 3vw, 22px); }
+  .stats { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stats .driver { grid-column: 1 / -1; } }
+  .stat { background: var(--surface-2); border-radius: 4px 14px 4px 14px; padding: 8px 14px 8px; min-width: 0; position: relative; border-left: 4px solid var(--line); }
+  .stat small { display: block; font: italic 700 .82rem var(--font-display); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+  .stat b { display: block; font: italic 800 2rem/1.05 var(--font-display); font-variant-numeric: tabular-nums; }
+  .stat.driver { border-left-color: var(--c, var(--accent)); display: flex; align-items: center; gap: 12px; }
+  .stat.driver .car { flex: none; width: 70px; color: var(--c); }
+  .stat.driver b { font-size: 1.55rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .stat.driver div { min-width: 0; }
+  .stat.hot { border-left-color: var(--gold); }
+  .stat.bump b { animation: bump .5s var(--ease); }
+  @keyframes bump { 40% { transform: scale(1.3); color: var(--gold); } }
+  .gain { position: absolute; right: 12px; top: 2px; font: italic 800 1.5rem var(--font-display); color: var(--ok); pointer-events: none; animation: rise 1.3s var(--ease) forwards; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } 20% { opacity: 1; } to { opacity: 0; transform: translateY(-26px); } }
+
+  .trackbox { border-radius: 6px 18px 6px 18px; overflow: hidden; background: var(--road); border: 2px solid var(--line); position: relative; }
+  .trackbox::before, .trackbox::after { content: ""; display: block; height: 8px; background: repeating-linear-gradient(90deg, var(--accent) 0 22px, #f4f6fa 22px 44px); }
+  .lane { display: grid; grid-template-columns: var(--lw, 92px) minmax(0, 1fr); align-items: center; height: var(--lh, 46px); border-top: 2px dashed var(--paint); }
+  .lane:first-child { border-top: 0; }
+  .lane .who { padding: 0 8px 0 12px; font: italic 700 1rem var(--font-display); letter-spacing: .06em; text-transform: uppercase; color: #dfe4ee; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .lane.me .who { color: var(--gold); }
+  .lane .run { position: relative; height: 100%; margin-right: 22px; }
+  .racer { position: absolute; left: calc(var(--p, 0) * (100% - var(--cw, 78px))); top: 50%; width: var(--cw, 78px); transform: translateY(-50%); color: var(--c); transition: left 1.5s cubic-bezier(.3, .7, .2, 1); will-change: left; filter: drop-shadow(0 3px 2px rgba(0,0,0,.5)); }
+  .racer::before { content: ""; position: absolute; right: 92%; top: 40%; width: 46px; height: 14px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--c) 55%, transparent)); opacity: 0; border-radius: 8px; transition: opacity .3s; }
+  .racer.go::before { opacity: 1; }
+  .lane.me .racer { z-index: 2; }
+  .finish { position: absolute; top: 8px; bottom: 8px; right: 0; width: 22px; background: conic-gradient(#0b0d11 25%, #f4f6fa 0 50%, #0b0d11 0 75%, #f4f6fa 0) 0 0 / 11px 11px; z-index: 1; }
+  .grid-start { position: absolute; top: 8px; bottom: 8px; left: var(--lw, 92px); width: 3px; background: var(--paint); z-index: 1; }
+  @media (max-width: 600px) { .trackbox { --lw: 62px; --lh: 38px; } .racer { --cw: 56px; } .lane .who { font-size: .9rem; padding-left: 8px; } }
+
+  /* lights */
+  .lights-ov { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 16px; background: rgba(3, 5, 8, .82); backdrop-filter: blur(4px); animation: fade .2s both; }
+  @keyframes fade { from { opacity: 0; } }
+  .gantry { background: #0c0e12; border: 3px solid #323847; border-radius: 6px 26px 6px 26px; padding: 26px 34px 22px; display: flex; flex-direction: column; align-items: center; gap: 16px; box-shadow: 0 30px 70px rgba(0,0,0,.7); }
+  .bulbs { display: flex; gap: 16px; }
+  .bulb { width: clamp(46px, 14vw, 78px); aspect-ratio: 1; border-radius: 50%; background: #2a1112; border: 4px solid #1a0a0b; box-shadow: inset 0 6px 10px rgba(0,0,0,.6); transition: background .1s, box-shadow .1s; }
+  .bulb.on { background: #ff2a1f; box-shadow: 0 0 26px 6px rgba(255, 42, 31, .75), inset 0 -6px 10px rgba(0,0,0,.25); }
+  .gantry.go .bulb { background: #28e07c; border-color: #0b2a1a; box-shadow: 0 0 28px 6px rgba(40, 224, 124, .7); }
+  .gantry .say { margin: 0; font: italic 800 clamp(1.6rem, 6vw, 2.6rem) var(--font-display); letter-spacing: .18em; text-transform: uppercase; color: #fff; }
+
+  /* quick questions */
+  .expr { font: italic 800 clamp(3.4rem, 11vw, 6.4rem)/1 var(--font-display); letter-spacing: .01em; width: fit-content; max-width: 100%; padding: .02em .28em .06em; border-radius: 6px 22px 6px 22px; background: var(--road); color: #fff; border-left: 10px solid var(--accent); }
+  .story { margin: 0; font-size: clamp(1.15rem, 2.6vw, 1.5rem); font-weight: 700; line-height: 1.35; text-wrap: balance; }
+  .ansrow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; font: italic 700 1.3rem var(--font-display); letter-spacing: .06em; text-transform: uppercase; }
+  #qk-ans { width: 108px; min-height: 62px; text-align: center; font: italic 800 2.2rem var(--font-display); color: var(--ink); background: var(--surface-2); border: 3px solid var(--line); border-radius: 6px 16px 6px 16px; }
+  #qk-ans:focus { border-color: var(--gold); outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 30%, transparent); }
+  .apples { display: grid; grid-template-columns: repeat(var(--cols, 6), var(--sz)); gap: 8px; --sz: clamp(34px, 7vw, 62px); width: fit-content; max-width: 100%; }
+  .apple { width: var(--sz); height: var(--sz); display: block; animation: pop 0.35s ease-out both; animation-delay: calc(var(--i) * 40ms); }
+  @keyframes pop { from { transform: scale(0.4); opacity: 0.2; } }
+  .pile { background: var(--surface-2); border: 3px dashed var(--line); border-radius: 6px 22px 6px 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+  .pile .cap { font: italic 700 1rem var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .gboxes { display: flex; flex-wrap: wrap; gap: 14px; --sz: clamp(26px, 4.4vw, 50px); }
+  .gbox { display: grid; grid-template-columns: repeat(var(--gc), var(--sz)); gap: 4px; padding: 10px; border: 3px dashed var(--line); border-radius: 6px 18px 6px 18px; background: var(--surface-2); }
+  .gi { width: var(--sz); height: var(--sz); display: block; animation: pop .35s ease-out both; animation-delay: calc(var(--i) * 40ms); }
+  .deq { display: flex; align-items: flex-start; gap: 4px 10px; padding-block: 4px; }
+  .deq .dc { display: flex; flex-direction: column; align-items: center; min-width: 0; flex: 0 1 150px; }
+  .deq .num { font: italic 800 clamp(2.6rem, 7vw, 3.8rem)/1 var(--font-display); font-variant-numeric: tabular-nums; }
+  .deq .op { font: italic 700 clamp(2rem, 6vw, 3rem)/1 var(--font-display); color: var(--ink-2); }
+  .deq .stem { width: 3px; height: 14px; background: var(--gold); margin-top: 8px; position: relative; }
+  .deq .stem::after { content: ""; position: absolute; left: -4px; top: -4px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold); }
+  .deq .note { border: 2px solid var(--gold); background: var(--hl); border-radius: 4px 10px 4px 10px; padding: 5px 9px; font-weight: 700; font-size: .85rem; line-height: 1.25; text-align: center; }
+  .qk-done { display: flex; flex-direction: column; gap: 14px; animation: swoosh .5s var(--ease) both; }
+
+  /* pager */
+  .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .pager span { text-align: center; color: var(--ink-2); font: italic 700 1.05rem var(--font-display); letter-spacing: .1em; text-transform: uppercase; min-width: 0; }
+  .btn.attn { animation: ring .8s ease-in-out infinite; }
+  @keyframes ring { 50% { transform: scale(1.05); box-shadow: 0 4px 0 var(--accent-2), 0 0 0 7px color-mix(in srgb, var(--accent) 40%, transparent); } }
+
+  /* results */
+  .overlay { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 16px; padding-top: max(16px, env(safe-area-inset-top, 0px)); padding-bottom: max(16px, env(safe-area-inset-bottom, 0px)); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); background: rgba(3, 5, 8, .8); backdrop-filter: blur(5px); animation: fade .25s both; }
+  .w-card { position: relative; z-index: 1; width: min(100%, 620px); max-height: 100%; overflow: auto; background: var(--surface); border: 3px solid var(--gold); border-radius: 6px 34px 6px 34px; padding: clamp(22px, 4vw, 36px); padding-top: clamp(40px, 6vw, 54px); display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; box-shadow: 0 30px 70px -20px rgba(0,0,0,.8); animation: rise2 .55s var(--ease) both; }
+  .w-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 22px; background: conic-gradient(#0b0d11 25%, #f4f6fa 0 50%, #0b0d11 0 75%, #f4f6fa 0) 0 0 / 22px 22px; }
+  @keyframes rise2 { from { opacity: 0; transform: translateY(30px) scale(.94); } }
+  .w-kicker { margin: 0; font: italic 800 1.1rem var(--font-display); letter-spacing: .22em; text-transform: uppercase; color: var(--ink-2); }
+  .w-pos { font: italic 800 clamp(5rem, 22vw, 8rem)/.9 var(--font-display); color: var(--gold); text-shadow: 0 6px 0 rgba(0,0,0,.3); animation: bob 1.8s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-6px) skewX(-4deg); } }
+  .w-card h2 { margin: 0; font: italic 800 clamp(1.8rem, 6vw, 2.6rem)/1.05 var(--font-display); text-transform: uppercase; text-wrap: balance; }
+  .w-sub { margin: 0; color: var(--ink-2); }
+  .w-stats { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .w-stats div { background: var(--surface-2); border-radius: 4px 14px 4px 14px; padding: 8px 6px; }
+  .w-stats small { display: block; font: italic 700 .8rem var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .w-stats b { font: italic 800 1.9rem/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+  .w-list { list-style: none; margin: 4px 0 0; padding: 0; width: 100%; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+  .w-list li { display: grid; grid-template-columns: 2rem 5.6rem minmax(0, 1fr); gap: 10px; align-items: center; font-weight: 700; }
+  .w-list .rk { font: italic 800 1.3rem var(--font-display); color: var(--gold); }
+  .w-list .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .w-list li.me .nm { color: var(--gold); }
+  .w-bar { height: 16px; border-radius: 4px 8px 4px 8px; background: var(--track); overflow: hidden; }
+  .w-bar span { display: block; height: 100%; background: var(--c); animation: grow .9s var(--ease) both; transform-origin: left; }
+  @keyframes grow { from { transform: scaleX(0); } }
+  .w-actions { justify-content: center; margin-top: 6px; }
+  .confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+  .confetti span { position: absolute; top: -24px; width: 12px; height: 12px; background: var(--cc); animation: fall var(--d) linear var(--dl) forwards; }
+  @keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
+  .spark { position: fixed; z-index: 70; width: 11px; height: 11px; pointer-events: none; }
+  #theme .ico { display: inline-block; width: 1.05em; text-align: center; margin-right: 6px; }
+
+  
+
+  /* garage card (the six sharing challenges) */
+  #view-solve { background: var(--m-bg); color: var(--m-ink); border: 3px solid var(--m-line); padding-top: 46px; gap: 16px; box-shadow: var(--shadow); }
+  #view-solve:before { content: ""; height: 18px; position: absolute; top: 0; left: 0; right: 0; background: repeating-linear-gradient(90deg, var(--accent) 0 24px, #f4f6fa 24px 48px); }
+  #view-solve .kicker { background: var(--accent); color: #fff; }
+  #view-solve #sv-q { border-radius: 6px 20px 6px 20px; font-weight: 600; border-left: 8px solid var(--accent); }
+  #view-solve .host { filter: drop-shadow(0 14px 10px rgba(0, 0, 0, .45)); }
+  .share { border-radius: 6px 26px 6px 26px; }
+  .pool, .vgrid.table { border-radius: 6px 20px 6px 20px; }
+  .phead b, .vhead b { font-style: normal; }
+  @media (max-width: 600px) { .stats .stat b { font-size: 1.7rem; } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .confetti, .spark { display: none; }
+  }
+
+  /* ---------- quiz additions ---------- */
+  .segs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .segs button { min-height: 56px; padding: 8px 10px; border-radius: 5px 14px 5px 14px; border: 3px solid var(--line); background: var(--surface-2); color: var(--ink); font: 700 1.02rem var(--font-ui); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-align: center; transition: transform .15s var(--ease), border-color .15s; }
+  .segs button b { font: italic 800 1.3rem var(--font-display); color: var(--gold); }
+  .segs button:hover { transform: translateY(-2px); border-color: var(--ink-2); }
+  .segs button[aria-pressed="true"] { border-color: var(--gold); background: var(--hl); transform: translateY(-2px); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 30%, transparent); }
+  .segs.short button { font: italic 800 1.5rem var(--font-display); }
+
+  .qhead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 14px; }
+  .qhead .kicker { align-self: auto; }
+  .qtype { font: italic 700 1rem var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+  .qprompt { margin: 0; font-size: clamp(1.35rem, 3.6vw, 2rem); line-height: 1.3; font-weight: 700; text-wrap: balance; max-width: 36ch; }
+  .idea { margin: 0; font-size: 1.15rem; max-width: 56ch; }
+  .qvis { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; padding: 16px 20px; width: fit-content; max-width: 100%; border: 2px dashed var(--line); border-radius: 6px 18px 6px 18px; background: var(--surface-2); color: var(--accent-text); overflow-x: auto; }
+  .vis { display: block; max-width: 100%; height: auto; }
+  .qvis .vis { color: var(--accent-text); }
+
+  .qans { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  @media (max-width: 640px) { .opts { grid-template-columns: minmax(0, 1fr); } }
+  .opt { display: flex; align-items: center; gap: 14px; text-align: left; min-height: 64px; padding: 10px 16px; border-radius: 5px 16px 5px 16px; border: 3px solid var(--line); background: var(--surface-2); color: var(--ink); font: 700 1.2rem/1.25 var(--font-ui); cursor: pointer; box-shadow: 0 4px 0 var(--line); transition: transform .12s var(--ease), border-color .15s, background .15s, box-shadow .12s; min-width: 0; }
+  .opt .ltr { flex: none; width: 2.1rem; height: 2.1rem; display: grid; place-items: center; border-radius: 50%; background: var(--surface); border: 2px solid var(--line); font: italic 800 1.1rem var(--font-display); }
+  .opt span { min-width: 0; overflow-wrap: anywhere; color: var(--ink); }
+  .opt .vis { color: var(--accent-text); max-height: 110px; }
+  .opt:hover:not(:disabled) { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 6px 0 var(--line); }
+  .opt:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 0 0 var(--line); }
+  .opt.good { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 20%, var(--surface-2)); box-shadow: 0 4px 0 var(--ok); }
+  .opt.good .ltr { background: var(--ok); border-color: var(--ok); color: #04170d; }
+  .opt.bad { border-color: var(--bad); background: color-mix(in srgb, var(--bad) 16%, var(--surface-2)); animation: shake .35s; opacity: .75; }
+  .opt:disabled:not(.good):not(.bad) { opacity: .55; cursor: default; }
+  .opt.tog[aria-pressed="true"] { border-color: var(--gold); background: var(--hl); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 35%, transparent), 0 4px 0 var(--line); }
+  .opt.tog[aria-pressed="true"] .ltr { background: var(--gold); border-color: var(--gold); color: #1d1600; }
+  .vopts .opt { align-items: center; }
+
+  /* fill in the blanks */
+  .fillbox { gap: 18px; }
+  .bank { display: flex; flex-wrap: wrap; gap: 10px; padding: 14px; border-radius: 6px 18px 6px 18px; background: var(--surface-2); border: 2px dashed var(--line); }
+  .chip { min-height: 48px; padding: 6px 18px; border-radius: 5px 14px 5px 14px; border: 3px solid var(--gold); background: var(--hl); color: var(--ink); font: 700 1.15rem var(--font-ui); cursor: pointer; box-shadow: 0 3px 0 var(--gold); transition: transform .12s var(--ease), opacity .15s; }
+  .chip:hover:not(:disabled) { transform: translateY(-2px); }
+  .chip.used { opacity: .25; box-shadow: none; border-style: dashed; cursor: default; }
+  .sent { margin: 0; font-size: clamp(1.25rem, 3vw, 1.7rem); font-weight: 700; line-height: 2.5; max-width: 42ch; }
+  .blank { display: inline-block; vertical-align: middle; min-width: 4.2rem; min-height: 2.6rem; margin-inline: 4px; padding: 2px 12px; border: 3px dashed var(--ink-2); border-radius: 5px 12px 5px 12px; background: var(--surface); color: var(--ink); font: 700 1.15rem var(--font-ui); cursor: pointer; text-align: center; }
+  .blank.sel { border-color: var(--gold); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 35%, transparent); }
+  .blank:not(:empty) { border-style: solid; border-color: var(--accent); background: var(--hl); }
+  .blank.good { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 20%, var(--surface)); cursor: default; }
+  .blank.bad { border-color: var(--bad); animation: shake .35s; }
+
+  /* matching */
+  .matchbox { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+  .mcol { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .mi { display: flex; align-items: center; gap: 10px; min-height: 64px; padding: 8px 12px; border-radius: 5px 14px 5px 14px; border: 3px solid var(--line); background: var(--surface-2); color: var(--ink); font: 700 1.1rem/1.25 var(--font-ui); cursor: pointer; text-align: left; transition: transform .12s var(--ease), border-color .15s; min-width: 0; }
+  .mi span { min-width: 0; overflow-wrap: anywhere; }
+  .mi .vis { color: var(--accent-text); max-height: 72px; }
+  .mi .bd { flex: none; width: 1.7rem; height: 1.7rem; border-radius: 50%; border: 2px dashed var(--line); display: grid; place-items: center; font: normal 800 .95rem var(--font-ui); color: #fff; font-style: normal; }
+  .mi .bd:not(:empty) { border: 0; }
+  .mi:hover:not(:disabled) { border-color: var(--gold); transform: translateY(-2px); }
+  .mi.sel { border-color: var(--gold); background: var(--hl); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 35%, transparent); }
+  .mi.good { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 18%, var(--surface-2)); }
+  .mi.bad { border-color: var(--bad); animation: shake .35s; }
+  @media (max-width: 520px) { .matchbox { gap: 8px; } .mi { font-size: .98rem; padding: 8px; } }
+
+  /* drawing pad */
+  .padbox { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  .padarea { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+  .padtools { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ptool { min-height: 38px; padding: 4px 14px; border-radius: 5px 12px 5px 12px; border: 2px solid var(--line); background: var(--surface-2); color: var(--ink); font: 700 .92rem var(--font-ui); cursor: pointer; }
+  .ptool[aria-pressed="true"] { border-color: var(--gold); background: var(--hl); }
+  #padc { display: block; width: 100%; height: 230px; border: 3px dashed var(--line); border-radius: 6px 18px 6px 18px; background-color: var(--surface); background-image: radial-gradient(var(--line) 1.2px, transparent 1.4px); background-size: 20px 20px; touch-action: none; cursor: crosshair; }
+
+  /* pit crew hints */
+  .coachbox { border: 3px solid var(--gold); border-radius: 6px 18px 6px 18px; padding: 12px 16px; background: color-mix(in srgb, var(--gold) 10%, var(--surface)); display: flex; flex-direction: column; gap: 8px; }
+  .chead { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; font: italic 800 1.2rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; }
+  .hints { margin: 0; padding-left: 1.4rem; display: flex; flex-direction: column; gap: 4px; font-weight: 600; }
+  .hints:empty { display: none; }
+  .egcard { background: var(--surface-2); border: 2px solid var(--line); border-radius: 6px 18px 6px 18px; padding: 18px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; color: var(--accent-text); }
+  .egv { max-width: 100%; overflow-x: auto; }
+  .egq { margin: 0; color: var(--ink); font: italic 800 1.5rem var(--font-display); letter-spacing: .03em; }
+  .egl { margin: 0; color: var(--ink); font: 700 1.2rem var(--font-ui); }
+  .vocab-eg { color: var(--ink); line-height: 1.9; margin: 0; }
+  .stepsol { margin: 0; padding-left: 1.5rem; display: flex; flex-direction: column; gap: 10px; font-size: 1.1rem; font-weight: 600; }
+  .donelist { margin: 0; padding-left: 1.4rem; font-size: 1.15rem; font-weight: 700; }
+
+  /* review report */
+  .skills { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .sk { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.6fr) minmax(0, 1fr); gap: 14px; align-items: center; padding: 10px 14px; border-radius: 5px 14px 5px 14px; background: var(--surface-2); border-left: 6px solid var(--c, var(--line)); }
+  .sk .sn b, .sk .ss b { display: block; font-weight: 800; }
+  .sk small { display: block; color: var(--ink-2); font-weight: 600; }
+  .sk .ss { text-align: right; }
+  .sb { height: 14px; border-radius: 4px 8px 4px 8px; background: var(--track); overflow: hidden; }
+  .sb span { display: block; height: 100%; background: var(--c); animation: grow .9s var(--ease) both; transform-origin: left; }
+  .sk.strong { --c: var(--ok); }
+  .sk.ok { --c: var(--warn); }
+  .sk.weak { --c: var(--bad); }
+  @media (max-width: 600px) { .sk { grid-template-columns: minmax(0, 1fr) auto; } .sk .sb { grid-column: 1 / -1; grid-row: 2; } }
+  .missed { display: flex; flex-direction: column; gap: 14px; }
+  .miss { border: 2px solid var(--line); border-radius: 6px 18px 6px 18px; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: var(--surface-2); }
+  .miss .mh { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; align-items: center; }
+  .miss .tag { background: var(--c); color: #0b0d11; font: italic 800 .95rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; padding: 2px 12px; border-radius: 4px 10px 4px 10px; }
+  .miss small { color: var(--ink-2); font-weight: 700; }
+  .miss .mq { margin: 0; font-size: 1.15rem; font-weight: 700; }
+  .miss .mv { color: var(--accent-text); max-width: 100%; overflow-x: auto; }
+  .miss .ma { border-left: 5px solid var(--ok); padding: 6px 12px; background: color-mix(in srgb, var(--ok) 10%, var(--surface)); border-radius: 0 10px 10px 0; font-weight: 700; display: flex; flex-direction: column; gap: 2px; }
+  .miss .ans-item { display: block; }
+  .miss .ma .vis { color: var(--accent-text); max-height: 90px; }
+  .miss .mw { margin: 0; color: var(--ink-2); font-weight: 600; }
+  .card.shake { animation: shake .4s; }
+  .btn.primary.big { min-width: 11rem; }
+  .hero .drift .car { color: var(--c); }
+
+  .board li.empty { display: block; font-weight: 500; color: var(--ink-2); text-align: left; counter-increment: none; }
+  .board li.empty::before { content: none; }
+  .idea { margin-bottom: 14px; }
+  #co-title { margin-bottom: 6px; }
+
+  @media (max-width: 560px) {
+    #modes { grid-template-columns: 1fr; }
+    #modes button { white-space: normal; }
+  }
+
+  .mi svg.vis { height: 70px !important; width: auto !important; max-width: 100%; }
+  .vopts .opt svg.vis { height: 84px !important; width: auto !important; max-width: 100%; }
+  .ma svg.vis, .ans-item svg.vis, .mv svg.vis { height: 56px !important; width: auto !important; max-width: 100%; vertical-align: middle; margin-right: 8px; }
+  .vsp { display: inline-block; width: 36px; }
+  .ans-item { display: inline-flex; align-items: center; gap: 8px; margin: 2px 8px 2px 0; }
+
+  .drawbox { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+  .dnote { margin: 0; color: var(--ink-2); font-weight: 600; }
+  .dmodel { width: 100%; background: var(--surface-2); border: 2px dashed var(--line); border-radius: 6px 18px 6px 18px; padding: 14px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; color: var(--accent-text); }
+  .dmodel p { margin: 0; color: var(--ink); }
+  .dlbl { font: italic 800 .95rem var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2) !important; }
+  .dcmp { font-weight: 700; }
+  .dm-vis svg.vis { height: 100px !important; width: auto !important; max-width: 100%; }
+  #home.arm { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  .dpair { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end; }
+  .dfig { margin: 0; display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .dfig figcaption { font-weight: 800; color: var(--ink); }
+
+  #lens { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #lens button[data-n="99"] { font-size: 1.15rem; }
+  .mrt { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+  .mrt span { font-weight: 700; font-size: .95rem; }
+
+  #lens button[data-n="99"] { font-size: 1rem; }
+
+  .dtools { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dboard { width: 100%; max-width: 640px; aspect-ratio: 2 / 1; touch-action: none; cursor: crosshair; background: var(--surface-2); border: 3px dashed var(--line); border-radius: 6px 18px 6px 18px; display: block; }
+  .dboard.ok { border-style: solid; border-color: var(--ok); }
+  .dboard .gdot { fill: var(--ink-2); opacity: .35; }
+  .dboard .gcounter { fill: var(--accent); stroke: var(--surface); stroke-width: 2; }
+  .dboard .gcircle { fill: color-mix(in srgb, var(--gold) 12%, transparent); stroke: var(--gold); stroke-width: 3.5; }
+  .dboard .gcircle.prev { stroke-dasharray: 6 5; }
+
+  .top { flex-wrap: nowrap; }
+  .teacher { margin: 0; font: italic 800 clamp(1.3rem, 3.4vw, 2rem) var(--font-display); letter-spacing: .02em; color: var(--accent-text, var(--accent)); white-space: nowrap; }
+  .toolbar { display: flex; justify-content: flex-end; }
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><svg viewBox="0 0 120 40"><use href="#carsym"/></svg></div>
+      <h1>Unit 3 <em>Review</em></h1>
+    </div>
+    <p class="teacher">Miss Sumaia</p>
+  </div>
+  <div class="toolbar">
+    <div class="tools">
+      <button class="btn small" id="home" type="button" hidden>Home</button>
+      <button class="btn small" id="mute" type="button" aria-pressed="false">Sound on</button>
+      <button class="btn small" id="theme" type="button" aria-label="Switch between light and dark"><span class="ico" aria-hidden="true">☾</span><span id="theme-t">Light</span></button>
+      <button class="btn small" id="full" type="button">Full screen</button>
+    </div>
+  </div>
+
+  <!-- start screen -->
+  <section class="card" id="view-start">
+    <div class="hero">
+      <h2>Multiply. Divide.<br><span>Win the race.</span></h2>
+      <p>Quiz practice for Unit 3. Answer each question to speed your car round the track.</p>
+      <div class="drift" aria-hidden="true" id="drift"></div>
+    </div>
+    <div class="start-grid">
+      <form class="col" id="start-form" autocomplete="off" novalidate>
+        <div class="field" id="name-field">
+          <label for="name">Driver name</label>
+          <input id="name" type="text" maxlength="16" placeholder="Type your name" autocomplete="off" spellcheck="false">
+          <p class="err" id="name-err" role="alert"></p>
+        </div>
+        <div class="field">
+          <span class="lbl" id="len-lbl">How many laps?</span>
+          <div class="segs short" id="lens" role="group" aria-labelledby="len-lbl">
+            <button type="button" data-n="10">10</button>
+            <button type="button" data-n="15">15</button>
+            <button type="button" data-n="20">20</button>
+            <button type="button" data-n="99">All 22</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="lbl" id="car-lbl">Pick your car</span>
+          <div class="swatches" id="swatches" role="group" aria-labelledby="car-lbl"></div>
+        </div>
+        <button class="btn primary big" id="go" type="submit">Start race</button>
+      </form>
+      <div class="col">
+        <div>
+          <h3 class="sect-h">How you score</h3>
+          <ul class="how">
+            <li><b>100</b><span>Get a lap right the first time.</span></li>
+            <li><b>+20</b><span>Answer fast for a speed bonus.</span></li>
+            <li><b>+5</b><span>Each clean lap in a row adds a streak bonus.</span></li>
+            <li><b>−20</b><span>Every wrong try costs you points.</span></li>
+            <li><b>✎</b><span>Use the drawing pad to check your idea before you answer.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="sect-h">Hall of fame</h3>
+          <ol class="board" id="board"></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- race HUD -->
+  <section class="card hud" id="hud" hidden aria-label="Race status">
+    <div class="stats">
+      <div class="stat driver" id="st-driver"><span class="car" id="st-car"></span><div><small>Driver</small><b id="st-name"></b></div></div>
+      <div class="stat"><small>Lap</small><b id="st-lap">1/15</b></div>
+      <div class="stat" id="st-pts-wrap"><small>Points</small><b id="st-pts">0</b></div>
+      <div class="stat" id="st-streak-wrap"><small>Streak</small><b id="st-streak">0</b></div>
+      <div class="stat" id="st-pos-wrap"><small>Position</small><b id="st-pos">P1</b></div>
+    </div>
+    <div class="trackbox" id="track" role="img" aria-label="Race track">
+      <div id="lanes"></div>
+      <div class="grid-start"></div><div class="finish"></div>
+    </div>
+  </section>
+
+  <!-- the question card (race laps and guided practice) -->
+  <section class="card" id="view-q" hidden>
+    <div class="qhead">
+      <p class="kicker" id="q-kicker"></p>
+      <span class="qtype" id="q-type"></span>
+    </div>
+    <div class="coachbox" id="coachbox" hidden>
+      <div class="chead"><b>Pit crew help</b><button class="btn small" id="co-hint-btn" type="button">Give me a hint</button></div>
+      <ol class="hints" id="co-hints" aria-live="polite"></ol>
+    </div>
+    <h2 class="qprompt" id="q-prompt"></h2>
+    <div class="qvis" id="q-vis" hidden></div>
+    <div class="qans" id="q-ans"></div>
+    <div class="actions">
+      <button class="btn primary" id="q-check" type="button" hidden>Check my answer</button>
+    </div>
+    <p class="msg" id="q-msg" aria-live="polite"></p>
+    <div class="padbox" id="padbox">
+      <button class="btn small" id="pad-toggle" type="button" aria-expanded="false" aria-controls="padarea">✎ <span>Draw to check</span></button>
+      <div class="padarea" id="padarea" hidden>
+        <div class="padtools" id="padtools" role="group" aria-label="Drawing tools">
+          <button type="button" class="ptool" data-tool="pen" aria-pressed="true">Pen</button>
+          <button type="button" class="ptool" data-tool="dot" aria-pressed="false">Counters</button>
+          <button type="button" class="ptool" data-tool="erase" aria-pressed="false">Eraser</button>
+          <button type="button" class="ptool" id="pad-clear">Clear</button>
+        </div>
+        <canvas id="padc" aria-label="Drawing pad. Draw groups, arrays or counters to check your answer."></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- guided practice: lesson card -->
+  <section class="card" id="view-coach" hidden>
+    <p class="kicker" id="co-kicker"></p>
+    <div id="co-body">
+      <h2 class="qprompt" id="co-title"></h2>
+      <p class="idea" id="co-idea"></p>
+      <div class="two">
+        <div class="egcard" id="co-eg"></div>
+        <div><h3 class="sect-h">How to do it</h3><ol class="stepsol" id="co-steps"></ol></div>
+      </div>
+    </div>
+    <div id="co-done" hidden>
+      <p class="idea">You practised:</p>
+      <ul class="donelist" id="co-done-skills"></ul>
+      <div class="actions"><button class="btn primary" id="co-again" type="button">Race again</button><button class="btn" id="co-report" type="button">Back to my report</button><button class="btn" id="co-new" type="button">Back to home</button></div>
+    </div>
+  </section>
+
+  <!-- review report -->
+  <section class="card" id="view-review" hidden>
+    <p class="kicker">Review</p>
+    <h2 class="qprompt" id="rv-title"></h2>
+    <p class="idea" id="rv-sub"></p>
+    <div>
+      <h3 class="sect-h">Your skills</h3>
+      <ul class="skills" id="rv-skills"></ul>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="rv-practice" type="button">Start guided practice</button>
+      <button class="btn" id="rv-again" type="button">Race again</button>
+      <button class="btn" id="rv-new" type="button">Back to home</button>
+    </div>
+    <div>
+      <h3 class="sect-h" id="rv-missed-h">Questions to look at again</h3>
+      <div class="missed" id="rv-missed"></div>
+    </div>
+  </section>
+
+  <div class="pager" id="pager" hidden>
+    <span id="pos"></span>
+    <button class="btn primary big" id="next" type="button" disabled>Next lap</button>
+  </div>
+
+  <div class="overlay" id="winner" role="dialog" aria-modal="true" aria-labelledby="w-title" hidden>
+    <div class="confetti" id="w-confetti" aria-hidden="true"></div>
+    <div class="w-card">
+      <p class="w-kicker">Chequered flag</p>
+      <div class="w-pos" id="w-pos">P1</div>
+      <h2 id="w-title">Well driven!</h2>
+      <p class="w-sub" id="w-sub"></p>
+      <div class="w-stats">
+        <div><small>Points</small><b id="w-pts">0</b></div>
+        <div><small>First try</small><b id="w-ft">0/15</b></div>
+        <div><small>Best streak</small><b id="w-bs">0</b></div>
+      </div>
+      <ul class="w-list" id="w-list" aria-label="Final standings"></ul>
+      <div style="width:100%;text-align:left"><h3 class="sect-h">Hall of fame</h3><ol class="board" id="w-board"></ol></div>
+      <div class="actions w-actions">
+        <button class="btn primary" id="w-review" type="button">Review my answers</button>
+        <button class="btn" id="w-again" type="button">Race again</button>
+        <button class="btn" id="w-new" type="button">Back to home</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="lights-ov" id="lights" hidden role="status" aria-live="assertive">
+    <div class="gantry" id="gantry">
+      <div class="bulbs"><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i><i class="bulb"></i></div>
+      <p class="say" id="say">Get ready</p>
+    </div>
+  </div>
+  <div class="sr" id="live" aria-live="polite"></div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="carsym"><path d="M10 27 L14 18 L38 15.5 L50 18.5 L62 21.5 L86 25.5 L108 27.5 L117 29.5 L115 33 L96 34 L40 34 L12 33 Z" fill="currentColor"/><path d="M40 25 L84 27.2 L84 31 L40 31.5 Z" fill="#000" opacity=".2"/><path d="M36 16 L41 9.5 L48 9.5 L47 18 Z" fill="currentColor"/><path d="M36 16 L41 9.5 L48 9.5 L47.4 12 L39 13 Z" fill="#000" opacity=".18"/><rect x="3" y="6" width="20" height="4.5" rx="1.2" fill="#14171d"/><rect x="2" y="5" width="3" height="14" rx="1" fill="currentColor"/><rect x="10" y="10" width="3.4" height="9" fill="#14171d"/><circle cx="57" cy="17.2" r="4.6" fill="#f4f6fa"/><path d="M55.2 15.6 h6 a1.4 1.4 0 0 1 1.4 1.4 v1.4 h-7.4 z" fill="#14171d"/><rect x="104" y="33" width="15" height="3.4" rx="1" fill="#14171d"/><rect x="112" y="29" width="4" height="8" rx="1" fill="currentColor"/><circle cx="25" cy="28.5" r="8.4" fill="#14171d"/><circle cx="25" cy="28.5" r="3.4" fill="#aeb6c6"/><circle cx="25" cy="28.5" r="1.2" fill="#14171d"/><circle cx="93" cy="29.5" r="7.2" fill="#14171d"/><circle cx="93" cy="29.5" r="3" fill="#aeb6c6"/><circle cx="93" cy="29.5" r="1" fill="#14171d"/></g></defs></svg>
+</div>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var p2 = function (n) { return String(n).padStart(2, '0'); };
+  function announce(msg) { var l = $('#live'); l.textContent = ''; setTimeout(function () { l.textContent = msg; }, 60); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ======================= QUESTION BANK, PART A: helpers and skills =======================
+  function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function uniq(a) { var seen = {}; return a.filter(function (x) { var k = String(x); if (seen[k]) return false; seen[k] = 1; return true; }); }
+  function pickOne(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+  // ---- pictures (inline SVG, drawn with the current text colour so they follow the theme)
+  function groupsVis(counts, label) {
+    var S = 15, pad = 7, gap = 12, per = 5, boxes = [];
+    counts.forEach(function (n) {
+      var cols = Math.min(n, Math.ceil(Math.sqrt(n * 1.3))), rows = Math.ceil(n / cols);
+      boxes.push({ n: n, cols: cols, rows: rows, w: cols * S + pad * 2, h: rows * S + pad * 2 });
+    });
+    var x = 0, y = 0, rowH = 0, W = 0, out = '';
+    boxes.forEach(function (b, i) {
+      if (i && i % per === 0) { y += rowH + gap; x = 0; rowH = 0; }
+      out += '<rect x="' + (x + 1) + '" y="' + (y + 1) + '" width="' + (b.w - 2) + '" height="' + (b.h - 2) + '" rx="' + Math.min(b.w, b.h) / 2.2 + '" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="2"/>';
+      for (var k = 0; k < b.n; k++) out += '<circle cx="' + (x + pad + (k % b.cols) * S + S / 2) + '" cy="' + (y + pad + Math.floor(k / b.cols) * S + S / 2) + '" r="5.2" fill="currentColor"/>';
+      x += b.w + gap; rowH = Math.max(rowH, b.h); W = Math.max(W, x - gap);
+    });
+    var H = y + rowH;
+    return '<svg class="vis" viewBox="0 0 ' + W + ' ' + H + '" style="width:' + Math.min(W * 1.5, 420) + 'px" role="img" aria-label="' + (label || counts.length + ' groups') + '">' + out + '</svg>';
+  }
+  function arrayVis(rows, cols, label) {
+    var S = 18, out = '';
+    for (var r = 0; r < rows; r++) for (var c = 0; c < cols; c++) out += '<circle cx="' + (c * S + S / 2) + '" cy="' + (r * S + S / 2) + '" r="6.4" fill="currentColor"/>';
+    var W = cols * S, H = rows * S;
+    return '<svg class="vis" viewBox="0 0 ' + W + ' ' + H + '" style="width:' + Math.min(W * 1.3, 340) + 'px" role="img" aria-label="' + (label || rows + ' rows of ' + cols) + '">' + out + '</svg>';
+  }
+  function ctx(o) { return o; }
+
+  // ---- skills (one per lesson, plus vocabulary)
+  var SK = {
+    L1: { name: 'Equal groups', less: 'Lesson 3-1', m: 'mul', col: '#e10600',
+      idea: 'Equal groups have the same number of objects in each group. You use multiplication to find how many in all.',
+      steps: ['Count how many groups there are.', 'Count how many objects are in one group.', 'Multiply: groups × objects in each group = total.'],
+      eg: function () { return { vis: groupsVis([4, 4, 4]), eq: '3 equal groups of 4', line: '3 × 4 = 12' }; } },
+    L2: { name: 'Arrays', less: 'Lesson 3-2', m: 'mul', col: '#ff8a00',
+      idea: 'An array shows objects in rows and columns. Each row has the same number of objects. Arrays represent multiplication.',
+      steps: ['Count the rows.', 'Count how many are in each row.', 'Write rows × in each row = total, or add the rows: 5 + 5 + 5.'],
+      eg: function () { return { vis: arrayVis(3, 5), eq: '3 rows of 5', line: '3 × 5 = 15 and 5 + 5 + 5 = 15' }; } },
+    L3: { name: 'Commutative property', less: 'Lesson 3-3', m: 'mul', col: '#ffd21f',
+      idea: 'You can multiply two factors in any order and the product stays the same. 3 × 4 = 4 × 3.',
+      steps: ['Look at the two factors.', 'Swap their order.', 'The product is the same, so the equation is still true.'],
+      eg: function () { return { vis: arrayVis(2, 5) + '&nbsp;&nbsp;&nbsp;' + arrayVis(5, 2), eq: '2 rows of 5 and 5 rows of 2', line: '2 × 5 = 5 × 2 = 10' }; } },
+    L4: { name: 'Equal sharing', less: 'Lesson 3-4', m: 'div', col: '#1fc26b',
+      idea: 'Division means equal sharing. Share the total into equal groups to find how many are in each group.',
+      steps: ['Find the total number of objects.', 'Find the number of groups.', 'Share one at a time into each group. Write total ÷ groups = number in each group.'],
+      eg: function () { return { vis: groupsVis([5, 5, 5, 5]), eq: '20 objects shared into 4 groups', line: '20 ÷ 4 = 5 in each group' }; } },
+    L5: { name: 'Equal grouping', less: 'Lesson 3-5', m: 'div', col: '#2f8cff',
+      idea: 'Division can also mean making groups of a set size. You find how many groups you can make.',
+      steps: ['Find the total number of objects.', 'Find how many go in each group.', 'Make groups of that size and count the groups. Write total ÷ size of group = number of groups.'],
+      eg: function () { return { vis: groupsVis([3, 3, 3, 3, 3, 3, 3]), eq: '21 students in groups of 3', line: '21 ÷ 3 = 7 groups' }; } },
+    L6: { name: 'Multiplication and division are related', less: 'Lesson 3-6', m: 'both', col: '#a66bff',
+      idea: 'One array or one set of equal groups can show both a multiplication and a division equation.',
+      steps: ['Write the multiplication equation: groups × in each group = total.', 'Put the total first, then divide by one factor.', 'The answer is the other factor.'],
+      eg: function () { return { vis: arrayVis(3, 2), eq: '3 rows of 2', line: '3 × 2 = 6 and 6 ÷ 3 = 2' }; } },
+    L7: { name: 'Find the unknown', less: 'Lesson 3-7', m: 'both', col: '#00b8c4',
+      idea: 'Use a picture and an equation to find the missing number. Group size unknown or number of groups unknown.',
+      steps: ['Say what you know: the total and one of the other numbers.', 'Draw it. Make equal groups or an array.', 'Count to find the unknown. Check by multiplying.'],
+      eg: function () { return { vis: groupsVis([6, 6, 6, 6]), eq: '24 shirts in 4 drawers', line: '24 ÷ 4 = 6 or 4 × 6 = 24' }; } }
+  };
+  var SK_ORDER = ['L1', 'L2', 'L3', 'L4', 'L5', 'L6', 'L7'];
+
+  // ---- builders: every question is { sk, t, m, q, vis, opts / text+ans+bank / pairs, why, hints }
+  var BANK = [];
+  function add(o) { o.id = 'q' + BANK.length; BANK.push(o); return o; }
+  function opts(good, bad) { return good.map(function (h) { return { h: h, ok: true }; }).concat(bad.map(function (h) { return { h: h, ok: false }; })); }
+  function mcq(sk, m, q, good, bad, why, vis, w) { return add({ sk: sk, m: m, t: 'mcq', q: q, vis: vis || '', opts: opts([good], bad), why: why, w: !!w }); }
+  function multi(sk, m, q, good, bad, why, vis) { return add({ sk: sk, m: m, t: 'multi', q: q, vis: vis || '', opts: opts(good, bad), why: why }); }
+  function yn(sk, m, q, yes, why, vis) { return add({ sk: sk, m: m, t: 'mcq', q: q, vis: vis || '', opts: [{ h: 'Yes', ok: yes }, { h: 'No', ok: !yes }], why: why, fixed: true }); }
+  function fill(sk, m, text, ans, bank, why) { return add({ sk: sk, m: m, t: 'fill', q: 'Tap a word or number at the top, then tap a blank to fill it.', text: text, ans: ans, bank: bank, why: why }); }
+  function match(sk, m, q, pairs, why) { return add({ sk: sk, m: m, t: 'match', q: q, pairs: pairs, why: why }); }
+  // ======================= QUESTION GENERATORS: pictures and equations only =======================
+  function nums(a) { return a.map(String); }
+  function numOpts(v, extra) {
+    var c = uniq([v + 1, v - 1, v + 2, v - 2, v * 2, v + 10].concat(extra || [])).filter(function (x) { return x > 0 && x !== v; });
+    return nums(shuffle(c).slice(0, 3));
+  }
+  function two(l1, h1, l2, h2) { var a = rnd(l1, h1), b = rnd(l2, h2), k = 0; while (b === a && k++ < 20) b = rnd(l2, h2); return [a, b]; }
+  function mulEq(a, b) { return a + ' × ' + b + ' = ' + (a * b); }
+  function divEq(t, d, q) { return t + ' ÷ ' + d + ' = ' + q; }
+  function gq(sk, m, t, q, extra) { var o = { id: 'g' + Math.random().toString(36).slice(2, 7), sk: sk, m: m, t: t, q: q, vis: '', gen: true }; for (var k in extra) o[k] = extra[k]; return o; }
+  function bankOf(list) { return nums(shuffle(uniq(list.filter(function (x) { return x > 0; })))); }
+  function badMul(a, b) { return uniq([a + ' + ' + b + ' = ' + (a + b), a + ' × ' + a + ' = ' + (a * a), b + ' × ' + b + ' = ' + (b * b), a + ' × ' + b + ' = ' + (a * b + a)]).filter(function (s) { return s !== mulEq(a, b); }); }
+  function pickN(a, n) { return shuffle(a).slice(0, n); }
+  function gv(g, n) { return groupsVis(Array(g).fill(n)); }
+  var FILL = 'Fill in the equation.';
+
+  var GEN = {
+    L1: [
+      { m: 'mul', f: function () { var p = two(2, 5, 2, 6), g = p[0], n = p[1], t = g * n;
+        return gq('L1', 'mul', 'mcq', 'How many in all?', { vis: gv(g, n), opts: opts([String(t)], numOpts(t, [g + n])), why: g + ' groups of ' + n + ' is ' + g + ' × ' + n + ' = ' + t + '.', hints: ['Count the groups.', 'Count how many are in one group.', 'Multiply: ' + g + ' × ' + n + '.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 5, 2, 6), g = p[0], n = p[1];
+        return gq('L1', 'mul', 'mcq', 'Which equation represents the equal groups?', { vis: gv(g, n), opts: opts([mulEq(g, n)], pickN(badMul(g, n), 2)), why: g + ' groups of ' + n + ' is ' + mulEq(g, n) + '.', hints: ['Count the groups. That is the first number.', 'Count one group. That is the second number.', 'Multiply them: ' + g + ' × ' + n + '.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 4, 2, 5), g = p[0], n = p[1];
+        var bad = [gv(n, g), gv(g, n + 1)];
+        return gq('L1', 'mul', 'mcq', 'Consider the equation ' + mulEq(g, n) + '. Choose the drawing that shows ' + g + ' groups of ' + n + '.', { opts: opts([gv(g, n)], bad), why: g + ' × ' + n + ' means ' + g + ' groups with ' + n + ' in each group.', hints: ['The first number is how many groups.', 'The second number is how many in each group.', 'Find the picture with ' + g + ' groups of ' + n + '.'] }); } },
+      { m: 'mul', f: function () { var a = rnd(2, 4), c = rnd(2, 5), x = a + 1, y = c + 1, ok = [gv(a, c), gv(x, y)];
+        var bad = [groupsVis([c, c + 1, c]), groupsVis([c + 1, Math.max(2, c - 1), c + 2, c])];
+        return gq('L1', 'mul', 'multi', 'Choose all the pictures that show equal groups.', { opts: opts(ok, bad), why: 'Equal groups have the same number in each group.', hints: ['Look at each group.', 'Is the number in every group the same?', 'Choose only the pictures where every group matches.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 5, 2, 6), g = p[0], n = p[1], yes = Math.random() < 0.5, x = yes ? g : g + 1;
+        return gq('L1', 'mul', 'mcq', 'Does this show ' + x + ' × ' + n + '?', { vis: gv(g, n), opts: [{ h: 'Yes', ok: yes }, { h: 'No', ok: !yes }], why: 'The picture shows ' + g + ' groups of ' + n + ', which is ' + g + ' × ' + n + '.', hints: ['Count the groups.', 'Count how many are in each group.', 'Do they match the numbers in the question?'] }); } }
+    ],
+    L2: [
+      { m: 'mul', f: function () { var r = rnd(2, 5), c = rnd(3, 8), t = r * c;
+        return gq('L2', 'mul', 'mcq', 'Which multiplication equation shows the arrays?', { vis: arrayVis(r, c), opts: opts([mulEq(r, c)], pickN(badMul(r, c), 2)), why: r + ' rows with ' + c + ' in each row is ' + mulEq(r, c) + '.', hints: ['Count the rows.', 'Count how many are in one row.', 'Multiply rows × in each row.'] }); } },
+      { m: 'mul', f: function () { var r = rnd(2, 4), c = rnd(3, 6), t = r * c;
+        var sum = Array(r).fill(c).join(' + ') + ' = ' + t;
+        var bad = uniq([r + ' + ' + c + ' = ' + (r + c), Array(r).fill(c + 1).join(' + ') + ' = ' + r * (c + 1), Array(Math.max(2, r - 1)).fill(c).join(' + ') + ' = ' + Math.max(2, r - 1) * c]).filter(function (s) { return s !== sum; });
+        return gq('L2', 'mul', 'mcq', 'Which addition equation shows the arrays?', { vis: arrayVis(r, c), opts: opts([sum], bad), why: 'Add one row, ' + c + ', for each of the ' + r + ' rows.', hints: ['How many rows are there?', 'How many are in each row?', 'Add that number once for every row.'] }); } },
+      { m: 'mul', f: function () { var r = rnd(2, 4), c = rnd(3, 5);
+        var bad = uniq([[r + 1, c], [r, c + 1], [r + 1, c + 1]].map(function (x) { return x.join('x'); })).map(function (s) { var z = s.split('x'); return arrayVis(+z[0], +z[1]); });
+        return gq('L2', 'mul', 'mcq', 'Which array shows ' + r + ' × ' + c + '?', { opts: opts([arrayVis(r, c)], bad), why: r + ' × ' + c + ' means ' + r + ' rows with ' + c + ' in each row.', hints: ['The first number is the rows.', 'The second number is how many in each row.', 'Count the rows and the columns of each array.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 5, 3, 6), r = p[0], c = p[1], yes = Math.random() < 0.5, x = yes ? r : r + 1;
+        return gq('L2', 'mul', 'mcq', 'Does this show ' + x + ' × ' + c + '?', { vis: arrayVis(r, c), opts: [{ h: 'Yes', ok: yes }, { h: 'No', ok: !yes }], why: 'The array has ' + r + ' rows of ' + c + ', which is ' + r + ' × ' + c + '.', hints: ['Count the rows.', 'Count how many are in each row.', 'Do they match the numbers in the question?'] }); } }
+    ],
+    L3: [
+      { m: 'mul', f: function () { var p = two(2, 9, 2, 9), a = p[0], b = p[1];
+        return gq('L3', 'mul', 'mcq', 'Which number makes the equation true?<br>' + a + ' × ' + b + ' = ' + b + ' × ?', { opts: opts([String(a)], nums(uniq([b, a + b, a + 1]).filter(function (x) { return x !== a; }).slice(0, 2))), why: 'Swap the factors: ' + a + ' × ' + b + ' = ' + b + ' × ' + a + '.', hints: ['The product stays the same when you swap the factors.', 'The right side already has ' + b + '.', 'The missing number is the other factor.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 5, 3, 6), r = p[0], c = p[1], t = r * c;
+        return gq('L3', 'mul', 'mcq', 'What is the multiplication equation for both arrays?', { vis: arrayVis(r, c) + '<span class="vsp"></span>' + arrayVis(c, r), opts: opts([mulEq(r, c) + ' and ' + mulEq(c, r)], [mulEq(r, c) + ' and ' + mulEq(r, r), r + ' + ' + c + ' = ' + (r + c) + ' and ' + c + ' + ' + r + ' = ' + (r + c)]), why: 'Turning the array swaps the factors. Both have ' + t + ' objects.', hints: ['Count the rows and columns of the first array.', 'The second array has the rows and columns swapped.', 'Both products are ' + t + '.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 9, 2, 9), a = p[0], b = p[1];
+        return gq('L3', 'mul', 'mcq', 'Which is the same as ' + a + ' × ' + b + '?', { opts: opts([b + ' × ' + a], [a + ' + ' + b, a + ' × ' + a, b + ' × ' + b]), why: 'Order does not change the product.', hints: ['Swap the two factors.', 'The product stays the same.', 'The answer is ' + b + ' × ' + a + '.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 5, 3, 7), r = p[0], c = p[1], t = r * c;
+        return gq('L3', 'mul', 'mcq', r + ' × ' + c + ' = ' + c + ' × ' + r + ' = ?', { vis: arrayVis(r, c) + '<span class="vsp"></span>' + arrayVis(c, r), opts: opts([String(t)], numOpts(t, [r + c])), why: 'Both arrays have ' + t + ' objects.', hints: ['Count the objects in the first array.', 'Turn the array. The total stays the same.', r + ' × ' + c + ' = ' + t + '.'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 9, 2, 9), a = p[0], b = p[1];
+        return gq('L3', 'mul', 'mcq', 'Which equation is true?', { opts: opts([a + ' × ' + b + ' = ' + b + ' × ' + a], [a + ' × ' + b + ' = ' + a + ' + ' + b, a + ' × ' + b + ' = ' + a + ' × ' + a, a + ' + ' + b + ' = ' + b + ' × ' + a]), why: 'Swapping the factors keeps the product.', hints: ['Look for the commutative property.', 'The same two factors, in a different order.', 'Pick the one that only swaps the factors.'] }); } }
+    ],
+    L4: [
+      { m: 'div', f: function () { var p = two(2, 5, 2, 6), g = p[0], e = p[1], t = g * e;
+        return gq('L4', 'div', 'mcq', t + ' ÷ ' + g + ' = ?', { vis: gv(g, e), opts: opts([String(e)], numOpts(e, [g])), why: divEq(t, g, e) + '. Share ' + t + ' into ' + g + ' equal groups.', hints: ['Draw ' + g + ' groups.', 'Share ' + t + ' one at a time into the groups.', 'Count one group.'] }); } },
+      { m: 'div', f: function () { var p = two(2, 9, 2, 9), g = p[0], e = p[1], t = g * e;
+        return gq('L4', 'div', 'mcq', t + ' ÷ ' + g + ' = ?', { opts: opts([String(e)], numOpts(e, [g])), why: divEq(t, g, e) + '.', hints: ['Draw ' + g + ' groups.', 'Share ' + t + ' one at a time.', 'Count one group.'] }); } },
+      { m: 'div', f: function () { var p = two(2, 5, 2, 6), g = p[0], e = p[1], t = g * e;
+        return gq('L4', 'div', 'mcq', 'Which division equation shows this picture?', { vis: gv(g, e), opts: opts([divEq(t, g, e)], [g + ' ÷ ' + t + ' = ' + e, t + ' × ' + g + ' = ' + e, t + ' − ' + g + ' = ' + e]), why: 'The total ' + t + ' goes first. Divide by ' + g + ' groups: ' + divEq(t, g, e) + '.', hints: ['What is the total number of objects?', 'Count the groups.', 'Write total ÷ groups = in each group.'] }); } }
+    ],
+    L5: [
+      { m: 'div', f: function () { var p = two(2, 6, 2, 5), s = p[0], g = p[1], t = s * g;
+        return gq('L5', 'div', 'mcq', t + ' ÷ ' + s + ' = ?', { vis: gv(g, s), opts: opts([String(g)], numOpts(g, [s])), why: divEq(t, s, g) + '. ' + t + ' made into groups of ' + s + ' gives ' + g + ' groups.', hints: ['Make groups of ' + s + '.', 'Keep going until all ' + t + ' are used.', 'Count the groups.'] }); } },
+      { m: 'div', f: function () { var p = two(2, 9, 2, 9), s = p[0], g = p[1], t = s * g;
+        return gq('L5', 'div', 'mcq', t + ' ÷ ' + s + ' = ?', { opts: opts([String(g)], numOpts(g, [s])), why: divEq(t, s, g) + '.', hints: ['Make groups of ' + s + '.', 'Keep going until all ' + t + ' are used.', 'Count the groups.'] }); } },
+      { m: 'div', f: function () { var p = two(2, 6, 2, 5), s = p[0], g = p[1], t = s * g;
+        return gq('L5', 'div', 'mcq', 'Which division equation shows this picture?', { vis: gv(g, s), opts: opts([divEq(t, s, g)], [s + ' ÷ ' + t + ' = ' + g, t + ' − ' + s + ' = ' + g, t + ' ÷ ' + s + ' = ' + s]), why: 'Total ÷ size of each group = number of groups.', hints: ['What is the total number of objects?', 'How many are in each group?', 'Write total ÷ in each group = number of groups.'] }); } }
+    ],
+    L6: [
+      { m: 'both', f: function () { var p = two(2, 5, 3, 6), r = p[0], c = p[1], t = r * c;
+        var good = mulEq(r, c) + ' and ' + divEq(t, r, c);
+        return gq('L6', 'both', 'mcq', 'Which pair of equations matches this array?', { vis: arrayVis(r, c), opts: opts([good], [mulEq(r, c) + ' and ' + divEq(t, r, t), r + ' + ' + c + ' = ' + (r + c) + ' and ' + divEq(r + c, r, c), c + ' × ' + c + ' = ' + c * c + ' and ' + divEq(c * c, c, c)]), why: 'Rows × columns = total, and total ÷ rows = columns.', hints: ['Count the rows and the objects in each row.', 'Write the multiplication equation first.', 'Then divide the total by the number of rows.'] }); } },
+      { m: 'both', f: function () { var p = two(2, 9, 2, 9), a = p[0], b = p[1], t = a * b;
+        return gq('L6', 'both', 'multi', 'Choose all the equations that go with ' + mulEq(a, b) + '.', { opts: opts([b + ' × ' + a + ' = ' + t, divEq(t, a, b), divEq(t, b, a)], [a + ' ÷ ' + t + ' = ' + b, a + ' + ' + b + ' = ' + t]), why: 'The product ' + t + ' goes first when you divide: ' + divEq(t, a, b) + ' and ' + divEq(t, b, a) + '.', hints: ['Swap the factors for one multiplication equation.', 'In division the total ' + t + ' goes first.', 'Divide ' + t + ' by each factor.'] }); } }
+    ],
+    L7: [
+      { m: 'mul', f: function () { var p = two(2, 9, 2, 9), a = p[0], b = p[1], t = a * b;
+        return gq('L7', 'mul', 'mcq', a + ' × ? = ' + t, { opts: opts([String(b)], numOpts(b, [a])), why: mulEq(a, b) + '.', hints: ['Draw ' + a + ' equal groups.', 'Share ' + t + ' across the groups.', 'How many in each group?'] }); } },
+      { m: 'mul', f: function () { var p = two(2, 9, 2, 9), a = p[0], b = p[1], t = a * b;
+        return gq('L7', 'mul', 'mcq', '? × ' + b + ' = ' + t, { opts: opts([String(a)], numOpts(a, [b])), why: mulEq(a, b) + '.', hints: ['The number of groups is missing.', 'How many groups of ' + b + ' make ' + t + '?', 'Count them.'] }); } },
+      { m: 'div', f: function () { var p = two(2, 9, 2, 9), g = p[0], e = p[1], t = g * e;
+        return gq('L7', 'div', 'mcq', t + ' ÷ ? = ' + e, { opts: opts([String(g)], numOpts(g, [e])), why: divEq(t, g, e) + '.', hints: ['Think: ? × ' + e + ' = ' + t + '.', 'How many groups of ' + e + ' make ' + t + '?', 'Count them.'] }); } },
+      { m: 'div', f: function () { var p = two(2, 9, 2, 9), g = p[0], e = p[1], t = g * e;
+        return gq('L7', 'div', 'mcq', '? ÷ ' + g + ' = ' + e, { opts: opts([String(t)], numOpts(t, [g + e])), why: divEq(t, g, e) + '. ' + g + ' groups of ' + e + ' make ' + t + '.', hints: ['Think: ' + g + ' × ' + e + ' = ?', 'Multiply to find the total.', 'The total goes first in division.'] }); } }
+    ]
+  };
+
+  // ---- matching: pictures on the left, equations on the right
+  function mulMatch() {
+    var used = {}, pairs = [], tries = 0;
+    while (pairs.length < 3 && tries++ < 60) {
+      var a = rnd(2, 5), b = rnd(3, 6), t = a * b; if (a === b || used[t]) continue; used[t] = 1;
+      pairs.push([pairs.length % 2 === 0 ? arrayVis(a, b) : gv(a, b), mulEq(a, b)]);
+    }
+    return gq('L2', 'mul', 'match', 'Match each picture to its equation.', { pairs: shuffle(pairs), why: 'Count the groups or rows, then how many in each.', hints: ['Count the groups or rows.', 'Count how many are in each one.', 'Multiply them.'] });
+  }
+  function divMatch() {
+    var used = {}, pairs = [], tries = 0;
+    while (pairs.length < 3 && tries++ < 60) {
+      var g = rnd(2, 5), e = rnd(2, 6), t = g * e; if (g === e || used[t]) continue; used[t] = 1;
+      pairs.push([gv(g, e), divEq(t, g, e)]);
+    }
+    return gq('L4', 'div', 'match', 'Match each picture to its division equation.', { pairs: shuffle(pairs), why: 'The total goes first. Divide it by the number of groups.', hints: ['Count all the objects.', 'Count the groups.', 'Write total ÷ groups = in each group.'] });
+  }
+
+  // ---- drawing questions: the student draws, then compares with the model
+  function cap(vis, text) { return '<figure class="dfig">' + vis + '<figcaption>' + text + '</figcaption></figure>'; }
+  var DRAW = [
+    { m: 'mul', f: function () { var p = two(2, 4, 2, 5), g = p[0], n = p[1];
+      return gq('L1', 'mul', 'draw', 'Draw ' + g + ' equal groups of ' + n + '.', { model: gv(g, n), compare: g + ' groups with ' + n + ' in each group. ' + mulEq(g, n) + '.', why: g + ' groups of ' + n + ' makes ' + g * n + ' in all.', hints: ['Draw ' + g + ' circles for the groups.', 'Put ' + n + ' dots in each circle.', 'Check that every group has the same number.'] }); } },
+    { m: 'mul', f: function () { var p = two(2, 4, 3, 6), r = p[0], c = p[1];
+      return gq('L2', 'mul', 'draw', 'Draw an array to show ' + r + ' rows with ' + c + ' in each row. Then write the equation.', { model: arrayVis(r, c), compare: r + ' rows with ' + c + ' in each row. ' + mulEq(r, c) + '.', why: r + ' rows of ' + c + ' makes ' + r * c + ' in all.', hints: ['Draw ' + r + ' rows.', 'Put ' + c + ' dots in every row.', 'Write rows × in each row = total.'] }); } },
+    { m: 'mul', f: function () { var p = two(2, 4, 2, 5), a = p[0], b = p[1];
+      return gq('L3', 'mul', 'draw', 'Draw equal groups to show that ' + a + ' × ' + b + ' = ' + b + ' × ' + a + '.', { model: '<div class="dpair">' + cap(gv(a, b), mulEq(a, b)) + cap(gv(b, a), mulEq(b, a)) + '</div>', compare: 'Both drawings have ' + a * b + ' in all, so ' + a + ' × ' + b + ' = ' + b + ' × ' + a + '.', why: 'Swapping the factors keeps the product.', hints: ['Draw ' + a + ' groups of ' + b + ' first.', 'Then draw ' + b + ' groups of ' + a + '.', 'Count each drawing. Are the totals the same?'] }); } },
+    { m: 'div', f: function () { var p = two(2, 4, 2, 5), g = p[0], e = p[1], t = g * e;
+      return gq('L4', 'div', 'draw', 'Draw ' + t + ' objects shared into ' + g + ' equal groups. How many in each group?', { model: gv(g, e), compare: divEq(t, g, e) + '. There are ' + e + ' in each group.', why: divEq(t, g, e) + '.', hints: ['Draw ' + g + ' circles.', 'Share ' + t + ' dots one at a time.', 'Count one group.'] }); } },
+    { m: 'div', f: function () { var p = two(2, 5, 2, 4), s = p[0], g = p[1], t = s * g;
+      return gq('L5', 'div', 'draw', 'Draw ' + t + ' objects in groups of ' + s + '. How many groups?', { model: gv(g, s), compare: divEq(t, s, g) + '. There are ' + g + ' groups.', why: divEq(t, s, g) + '.', hints: ['Draw ' + t + ' dots.', 'Circle groups of ' + s + '.', 'Count the groups.'] }); } }
+  ];
+  function drawQs(mode, k) { return shuffle(DRAW.filter(function (d) { return mode === 'both' || d.m === mode; })).slice(0, k).map(function (d) { return d.f(); }); }
+
+  function genQ(sk, mode) {
+    var list = GEN[sk].filter(function (g) { return mode === 'both' || g.m === 'both' || g.m === mode; });
+    return pickOne(list).f();
+  }
+  function sig(q) { return q.sk + '|' + q.t + '|' + q.q + '|' + (q.text || '') + '|' + (q.vis || '') + '|' + (q.opts ? q.opts.map(function (o) { return o.h; }).sort().join(',') : ''); }
+  // like the school quiz: three choices (A, B, C)
+  function trim3(q) {
+    if (q.t !== 'mcq' || q.opts.length <= 3) return q;
+    var good = q.opts.filter(function (o) { return o.ok; }), bad = shuffle(q.opts.filter(function (o) { return !o.ok; })).slice(0, 3 - good.length);
+    q.opts = good.concat(bad); return q;
+  }
+
+  // ======================= THE TEACHER'S REVISION SHEETS 1 AND 2 (fixed questions) =======================
+  function eqm(sk, q, good, bad, why, vis) { return mcq(sk, 'both', q, good, bad, why, vis); }
+  function drw(sk, q, model, compare, why, spec) { return add({ sk: sk, m: 'both', t: 'draw', q: q, model: model, compare: compare, why: why, spec: spec }); }
+  function mp(vis, text) { return vis; }
+
+  // ---- Q1 Equal groups
+  eqm('L1', 'What multiplication equation represents these equal groups?', '3 × 4 = 12', ['3 × 3 = 9', '4 × 4 = 16', '3 × 5 = 15'], '3 groups with 4 in each group is 3 × 4 = 12.', groupsVis([4, 4, 4]));
+  eqm('L1', 'What multiplication equation represents these equal groups?', '3 × 5 = 15', ['3 × 4 = 12', '5 × 5 = 25', '2 × 5 = 10'], '3 groups with 5 in each group is 3 × 5 = 15.', groupsVis([5, 5, 5]));
+  // ---- Q2 Arrays
+  eqm('L2', 'What addition equation represents this array?', '5 + 5 + 5 + 5 = 20', ['4 + 4 + 4 = 12', '5 + 5 = 10', '4 + 5 = 9'], 'The array has 4 rows of 5, so add 5 four times.', arrayVis(4, 5));
+  eqm('L2', 'What addition equation represents this array?', '7 + 7 + 7 = 21', ['7 + 7 = 14', '3 + 3 + 3 = 9', '7 + 3 = 10'], 'The array has 3 rows of 7, so add 7 three times.', arrayVis(3, 7));
+  // ---- Q3 Equal sharing
+  eqm('L4', 'What division equation represents these equal groups?', '15 ÷ 3 = 5', ['15 ÷ 5 = 5', '15 ÷ 3 = 3', '15 ÷ 2 = 5'], '15 counters in 3 equal groups is 15 ÷ 3 = 5.', groupsVis([5, 5, 5]));
+  eqm('L4', 'What division equation represents these equal groups?', '16 ÷ 4 = 4', ['16 ÷ 2 = 8', '16 ÷ 4 = 3', '16 ÷ 8 = 4'], '16 counters in 4 equal groups is 16 ÷ 4 = 4.', groupsVis([4, 4, 4, 4]));
+  // ---- Q4 Related multiplication and division
+  eqm('L6', 'Which division equation is related to the multiplication equation?<br>3 × 6 = 18', '18 ÷ 3 = 6', ['18 ÷ 2 = 9', '18 ÷ 6 = 6', '18 ÷ 3 = 5'], 'Start with the product, 18, and divide by one factor: 18 ÷ 3 = 6.');
+  eqm('L6', 'Which division equation is related to the multiplication equation?<br>2 × 7 = 14', '14 ÷ 2 = 7', ['14 ÷ 7 = 7', '14 ÷ 2 = 6', '14 ÷ 4 = 3'], 'Start with the product, 14, and divide by one factor: 14 ÷ 2 = 7.');
+  // ---- Q5 Find the unknown
+  eqm('L7', 'What number makes both equations true?<br>12 ÷ 4 = □<br>4 × □ = 12', '3', ['2', '4', '6'], '12 ÷ 4 = 3 and 4 × 3 = 12.');
+  eqm('L7', 'What number makes both equations true?<br>20 ÷ 5 = □<br>5 × □ = 20', '4', ['3', '5', '6'], '20 ÷ 5 = 4 and 5 × 4 = 20.');
+  // ---- Q6 Commutative property
+  eqm('L3', 'What number makes the equation true?<br>7 × 2 = 2 × □', '7', ['2', '9', '14'], 'Swap the factors: 7 × 2 = 2 × 7.');
+  eqm('L3', 'What number makes the equation true?<br>5 × 4 = 4 × □', '5', ['4', '9', '20'], 'Swap the factors: 5 × 4 = 4 × 5.');
+  // ---- Q7 Matching
+  add({ sk: 'L2', m: 'both', t: 'match', q: 'Match each equation to the correct picture.', why: 'Count the groups or rows and how many are in each. For division, the total is shared into equal groups.', pairs: [
+    ['12 ÷ 4 = 3', groupsVis([3, 3, 3, 3])],
+    ['3 × 5 = 15', arrayVis(3, 5)],
+    ['8 ÷ 2 = 4', groupsVis([4, 4])],
+    ['3 × 6 = 18', arrayVis(3, 6)]
+  ] });
+  add({ sk: 'L2', m: 'both', t: 'match', q: 'Match each equation to the correct picture.', why: 'Count the groups or rows and how many are in each. For division, the total is shared into equal groups.', pairs: [
+    ['4 × 3 = 12', arrayVis(4, 3)],
+    ['15 ÷ 3 = 5', groupsVis([5, 5, 5])],
+    ['2 × 6 = 12', arrayVis(2, 6)],
+    ['16 ÷ 4 = 4', groupsVis([4, 4, 4, 4])]
+  ] });
+  // ---- Q8 Draw an array
+  drw('L2', 'Draw an array to represent 3 × 6 = 18.', arrayVis(3, 6), '3 rows with 6 counters in each row. 3 × 6 = 18.', '3 rows of 6 is 18.', { kind: 'array', r: 3, c: 6 });
+  drw('L2', 'Draw an array to represent 4 × 4 = 16.', arrayVis(4, 4), '4 rows with 4 counters in each row. 4 × 4 = 16.', '4 rows of 4 is 16.', { kind: 'array', r: 4, c: 4 });
+  // ---- Q9 Draw equal groups
+  drw('L4', 'Draw an equal-groups model to represent 12 ÷ 4 = 3.', groupsVis([3, 3, 3, 3]), '12 counters shared into 4 equal groups. There are 3 in each group.', '12 ÷ 4 = 3.', { kind: 'groups', g: 4, n: 3 });
+  drw('L4', 'Draw an equal-groups model to represent 18 ÷ 3 = 6.', groupsVis([6, 6, 6]), '18 counters shared into 3 equal groups. There are 6 in each group.', '18 ÷ 3 = 6.', { kind: 'groups', g: 3, n: 6 });
+  // ---- Q10 Commutative property (blanks shown as choices)
+  eqm('L3', 'Use the commutative property.<br>4 × 6 = 6 × □', '4', ['6', '10', '24'], 'Swap the factors: 4 × 6 = 6 × 4.');
+  eqm('L3', 'Use the commutative property.<br>2 × 8 = 8 × □', '2', ['6', '8', '16'], 'Swap the factors: 2 × 8 = 8 × 2.');
+  eqm('L3', 'Use the commutative property.<br>5 × 7 = 7 × □', '5', ['7', '12', '35'], 'Swap the factors: 5 × 7 = 7 × 5.');
+  eqm('L3', 'Use the commutative property.<br>3 × 9 = □ × 3', '9', ['3', '12', '27'], 'Swap the factors: 3 × 9 = 9 × 3.');
+
+  // ---- one race from the sheets
+  function buildRace(mode, n) {
+    var pool = BANK.slice();
+    var matches = pool.filter(function (q) { return q.t === 'match'; }), draws = pool.filter(function (q) { return q.t === 'draw'; }), rest = pool.filter(function (q) { return q.t !== 'match' && q.t !== 'draw'; });
+    if (n >= pool.length) return shuffle(pool);
+    var nd = Math.min(draws.length, n <= 10 ? 1 : n <= 15 ? 2 : 3), nm = Math.min(matches.length, n <= 10 ? 1 : 2), nr = n - nd - nm;
+    var by = {}; shuffle(rest).forEach(function (q) { (by[q.sk] = by[q.sk] || []).push(q); });
+    var keys = shuffle(Object.keys(by)), out = [], k = 0, guard = 0;
+    while (out.length < nr && guard++ < 500) { var arr = by[keys[k++ % keys.length]]; if (arr.length) out.push(arr.shift()); }
+    return shuffle(out.concat(shuffle(draws).slice(0, nd), shuffle(matches).slice(0, nm)));
+  }
+  // ======================= QUESTION RENDERERS =======================
+  var LET = 'ABCDEF';
+  var Q = { checkFn: null };
+  function setCheck(label, fn) {
+    Q.checkFn = fn; var b = $('#q-check');
+    b.hidden = !fn; b.disabled = false; if (label) b.textContent = label;
+  }
+  function renderQuestion(q, cb) {
+    var host = $('#q-ans');
+    $('#q-prompt').innerHTML = q.q;
+    $('#q-vis').innerHTML = q.vis || '';
+    $('#q-vis').hidden = !q.vis;
+    host.className = 'qans'; host.innerHTML = ''; setCheck(null, null);
+    ({ mcq: rMcq, multi: rMulti, fill: rFill, match: rMatch, draw: rDraw })[q.t](q, host, cb);
+    $('#padbox').hidden = q.t === 'match' || q.t === 'draw';
+  }
+  function lockAll(host) { $$('button', host).forEach(function (b) { b.disabled = true; }); }
+
+  function rMcq(q, host, cb) {
+    var o = shuffle(q.opts), done = false, vis = o.some(function (x) { return x.h.indexOf('<svg') >= 0; });
+    host.className = 'qans opts' + (vis ? ' vopts' : '');
+    host.innerHTML = o.map(function (x, i) { return '<button type="button" class="opt" data-i="' + i + '"><b class="ltr">' + LET[i] + '</b><span>' + x.h + '</span></button>'; }).join('');
+    $$('.opt', host).forEach(function (b) {
+      b.onclick = function () {
+        if (done) return;
+        var x = o[+b.dataset.i];
+        if (x.ok) { done = true; b.classList.add('good'); lockAll(host); cb.right(); }
+        else { b.classList.add('bad'); b.disabled = true; cb.wrong(); }
+      };
+    });
+  }
+
+  function rMulti(q, host, cb) {
+    var o = shuffle(q.opts), done = false, vis = o.some(function (x) { return x.h.indexOf('<svg') >= 0; });
+    host.className = 'qans opts multi' + (vis ? ' vopts' : '');
+    host.innerHTML = o.map(function (x, i) { return '<button type="button" class="opt tog" aria-pressed="false" data-i="' + i + '"><b class="ltr">' + LET[i] + '</b><span>' + x.h + '</span></button>'; }).join('');
+    $$('.opt', host).forEach(function (b) {
+      b.onclick = function () { if (!done) b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); };
+    });
+    setCheck('Check my answer', function () {
+      if (done) return;
+      var picked = $$('.opt', host).filter(function (b) { return b.getAttribute('aria-pressed') === 'true'; });
+      if (!picked.length) { cb.msg('info', 'Choose at least one answer.'); return; }
+      var wrongPick = picked.filter(function (b) { return !o[+b.dataset.i].ok; });
+      var missing = o.filter(function (x) { return x.ok; }).length - (picked.length - wrongPick.length);
+      if (!wrongPick.length && !missing) {
+        done = true; picked.forEach(function (b) { b.classList.add('good'); }); lockAll(host); $('#q-check').disabled = true; cb.right();
+      } else {
+        wrongPick.forEach(function (b) { b.classList.add('bad'); });
+        setTimeout(function () { $$('.opt', host).forEach(function (b) { b.classList.remove('bad'); b.setAttribute('aria-pressed', 'false'); }); }, 750);
+        cb.wrong(wrongPick.length ? 'One of your choices is not right.' : 'You are missing a correct answer. Choose all that apply.');
+      }
+    });
+  }
+
+  function rFill(q, host, cb) {
+    var bank = q.bank.slice(), need = {};
+    q.ans.forEach(function (a) { need[a] = (need[a] || 0) + 1; });
+    Object.keys(need).forEach(function (a) { var have = bank.filter(function (x) { return x === a; }).length; for (; have < need[a]; have++) bank.push(a); });
+    var slots = q.ans.map(function () { return -1; }), locked = q.ans.map(function () { return false; }), used = bank.map(function () { return false; }), sel = -1, done = false;
+    var parts = q.text.split(/\{(\d+)\}/), html = '';
+    parts.forEach(function (p, i) { html += i % 2 ? '<button type="button" class="blank" data-k="' + p + '" aria-label="Blank ' + (+p + 1) + '"></button>' : p; });
+    host.className = 'qans fillbox';
+    host.innerHTML = '<div class="bank" role="group" aria-label="Choices">' + bank.map(function (b, i) { return '<button type="button" class="chip" data-c="' + i + '">' + b + '</button>'; }).join('') + '</div><p class="sent">' + html + '</p>';
+    function paint() {
+      $$('.chip', host).forEach(function (c) { c.disabled = used[+c.dataset.c] || done; c.classList.toggle('used', used[+c.dataset.c]); });
+      $$('.blank', host).forEach(function (b) {
+        var k = +b.dataset.k; b.textContent = slots[k] >= 0 ? bank[slots[k]] : '';
+        b.classList.toggle('sel', sel === k); b.classList.toggle('good', locked[k]);
+      });
+      var full = slots.every(function (s) { return s >= 0; });
+      $('#q-check').disabled = !full || done;
+    }
+    $$('.chip', host).forEach(function (c) {
+      c.onclick = function () {
+        var i = +c.dataset.c; if (used[i] || done) return;
+        var k = sel >= 0 && slots[sel] < 0 && !locked[sel] ? sel : slots.findIndex(function (s) { return s < 0; });
+        if (k < 0) return;
+        slots[k] = i; used[i] = true; sel = -1; paint();
+      };
+    });
+    $$('.blank', host).forEach(function (b) {
+      b.onclick = function () {
+        var k = +b.dataset.k; if (done || locked[k]) return;
+        if (slots[k] >= 0) { used[slots[k]] = false; slots[k] = -1; } else sel = sel === k ? -1 : k;
+        paint();
+      };
+    });
+    setCheck('Check my answer', function () {
+      if (done) return;
+      var bad = [];
+      q.ans.forEach(function (a, k) { if (!locked[k]) { if (bank[slots[k]] === a) locked[k] = true; else bad.push(k); } });
+      if (!bad.length) { done = true; paint(); lockAll(host); $('#q-check').disabled = true; cb.right(); return; }
+      bad.forEach(function (k) { $('.blank[data-k="' + k + '"]', host).classList.add('bad'); });
+      setTimeout(function () { bad.forEach(function (k) { used[slots[k]] = false; slots[k] = -1; var b = $('.blank[data-k="' + k + '"]', host); if (b) b.classList.remove('bad'); }); paint(); }, 700);
+      cb.wrong(bad.length === 1 ? 'One blank is not right. Try again.' : bad.length + ' blanks are not right. Try again.');
+    });
+    paint();
+  }
+
+  // ---- drawing question: place counters and draw circles on a board; the page checks it
+  function rDraw(q, host, cb) {
+    var S = q.spec, W = 640, H = 320, GR = 32, RD = 11, tool = 'dot', circles = [], dots = [], done = false, drag = null;
+    var groups = S.kind === 'groups';
+    host.className = 'qans drawbox';
+    host.innerHTML = '<div class="dtools" role="group" aria-label="Drawing tools"><button type="button" class="ptool" data-t="dot" aria-pressed="true">● Counter</button>' + (groups ? '<button type="button" class="ptool" data-t="circle" aria-pressed="false">◯ Circle</button>' : '') + '<button type="button" class="ptool" data-t="erase" aria-pressed="false">Eraser</button><button type="button" class="ptool" id="d-clear">Clear</button></div>' +
+      '<p class="dnote">' + (groups ? 'Counter: tap to place a counter. Circle: press and drag outward to draw a circle around a group. Eraser: tap a counter or a circle line.' : 'Tap to place counters. They snap to the grid. Eraser: tap a counter to remove it.') + '</p>' +
+      '<svg class="dboard" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Drawing board"></svg>';
+    var svg = $('.dboard', host);
+    function pos(e) { var pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY; var p = pt.matrixTransform(svg.getScreenCTM().inverse()); return { x: Math.max(0, Math.min(W, p.x)), y: Math.max(0, Math.min(H, p.y)) }; }
+    function paint() {
+      var s = '';
+      for (var gx = 0; gx < W / GR; gx++) for (var gy = 0; gy < H / GR; gy++) s += '<circle cx="' + (gx * GR + GR / 2) + '" cy="' + (gy * GR + GR / 2) + '" r="1.6" class="gdot"/>';
+      circles.concat(drag ? [drag] : []).forEach(function (c) { s += '<circle cx="' + c.cx + '" cy="' + c.cy + '" r="' + c.r + '" class="gcircle' + (c === drag ? ' prev' : '') + '"/>'; });
+      dots.forEach(function (d) { s += '<circle cx="' + (d.c * GR + GR / 2) + '" cy="' + (d.r * GR + GR / 2) + '" r="' + RD + '" class="gcounter"/>'; });
+      svg.innerHTML = s;
+    }
+    function cell(p) { return { c: Math.min(W / GR - 1, Math.floor(p.x / GR)), r: Math.min(H / GR - 1, Math.floor(p.y / GR)) }; }
+    function dotAt(k) { for (var i = 0; i < dots.length; i++) if (dots[i].c === k.c && dots[i].r === k.r) return i; return -1; }
+    svg.addEventListener('pointerdown', function (e) {
+      if (done) return; e.preventDefault(); var p = pos(e);
+      if (tool === 'dot') { var k = cell(p), i = dotAt(k); if (i >= 0) dots.splice(i, 1); else dots.push(k); paint(); }
+      else if (tool === 'circle') { drag = { cx: p.x, cy: p.y, r: 0 }; try { svg.setPointerCapture(e.pointerId); } catch (x) {} }
+      else {
+        var k2 = cell(p), j = dotAt(k2);
+        if (j >= 0) { dots.splice(j, 1); paint(); return; }
+        var best = -1, bd = 22;
+        circles.forEach(function (c, n) { var d = Math.abs(Math.hypot(p.x - c.cx, p.y - c.cy) - c.r); if (d < bd) { bd = d; best = n; } });
+        if (best >= 0) { circles.splice(best, 1); paint(); }
+      }
+    });
+    svg.addEventListener('pointermove', function (e) { if (!drag) return; var p = pos(e); drag.r = Math.hypot(p.x - drag.cx, p.y - drag.cy); paint(); });
+    ['pointerup', 'pointercancel'].forEach(function (ev) {
+      svg.addEventListener(ev, function () {
+        if (!drag) return; var c = drag; drag = null;
+        if (c.r >= 24) circles.push(c); else cb.msg('info', 'Drag farther out to make the circle bigger.');
+        paint();
+      });
+    });
+    $$('.ptool[data-t]', host).forEach(function (b) {
+      b.onclick = function () { tool = b.dataset.t; $$('.ptool[data-t]', host).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); };
+    });
+    $('#d-clear', host).onclick = function () { if (done) return; circles = []; dots = []; paint(); };
+    function plural(n, w) { return n + ' ' + w + (n === 1 ? '' : 's'); }
+    setCheck('Check my drawing', function () {
+      if (done) return;
+      if (!dots.length && !circles.length) { cb.msg('info', 'Draw your answer on the board first.'); return; }
+      if (groups) {
+        if (circles.length !== S.g) return cb.wrong('You need ' + plural(S.g, 'circle') + '. You have ' + circles.length + '.');
+        var cnt = circles.map(function () { return 0; }), outside = 0;
+        dots.forEach(function (d) {
+          var x = d.c * GR + GR / 2, y = d.r * GR + GR / 2, bi = -1, bv = 1e9;
+          circles.forEach(function (c, n) { var dist = Math.hypot(x - c.cx, y - c.cy); if (dist <= c.r && dist - c.r < bv) { bv = dist - c.r; bi = n; } });
+          if (bi < 0) outside++; else cnt[bi]++;
+        });
+        if (outside) return cb.wrong(outside === 1 ? 'One counter is outside the circles.' : outside + ' counters are outside the circles.');
+        if (cnt.some(function (n) { return n !== S.n; })) return cb.wrong('Every circle needs ' + S.n + ' counters. Count each circle again.');
+      } else {
+        var rows = {}, cols = {};
+        dots.forEach(function (d) { (rows[d.r] = rows[d.r] || []).push(d.c); cols[d.c] = 1; });
+        var rk = Object.keys(rows);
+        if (rk.length !== S.r) return cb.wrong('You need ' + plural(S.r, 'row') + '. You have ' + rk.length + '.');
+        if (rk.some(function (k) { return rows[k].length !== S.c; })) return cb.wrong('Each row needs ' + S.c + ' counters.');
+        if (Object.keys(cols).length !== S.c) return cb.wrong('Line the counters up in columns.');
+      }
+      done = true; $$('.ptool', host).forEach(function (b) { b.disabled = true; }); $('#q-check').disabled = true; svg.classList.add('ok'); cb.right();
+    });
+    paint();
+  }
+
+  var MCOL = ['#e10600', '#2f8cff', '#1fc26b', '#ff8a00', '#a66bff', '#00b8c4'];
+  function rMatch(q, host, cb) {
+    var n = q.pairs.length, ro = shuffle(q.pairs.map(function (p, i) { return i; })), lm = q.pairs.map(function () { return -1; }), lock = q.pairs.map(function () { return false; }), selL = -1, done = false;
+    function rightOf(i) { return lm[i]; }
+    host.className = 'qans matchbox';
+    host.innerHTML = '<div class="mcol" id="mL">' + q.pairs.map(function (p, i) { return '<button type="button" class="mi" data-l="' + i + '"><i class="bd"></i><span>' + p[0] + '</span></button>'; }).join('') + '</div><div class="mcol" id="mR">' + ro.map(function (src, j) { return '<button type="button" class="mi" data-r="' + j + '"><i class="bd"></i><span>' + q.pairs[src][1] + '</span></button>'; }).join('') + '</div>';
+    function paint() {
+      var rOwner = ro.map(function () { return -1; });
+      lm.forEach(function (j, i) { if (j >= 0) rOwner[j] = i; });
+      $$('[data-l]', host).forEach(function (b) {
+        var i = +b.dataset.l, bd = $('.bd', b);
+        b.classList.toggle('sel', selL === i); b.classList.toggle('good', lock[i]);
+        bd.textContent = lm[i] >= 0 ? i + 1 : ''; bd.style.background = lm[i] >= 0 ? MCOL[i % 6] : 'transparent';
+      });
+      $$('[data-r]', host).forEach(function (b) {
+        var j = +b.dataset.r, o = rOwner[j], bd = $('.bd', b);
+        b.classList.toggle('good', o >= 0 && lock[o]);
+        bd.textContent = o >= 0 ? o + 1 : ''; bd.style.background = o >= 0 ? MCOL[o % 6] : 'transparent';
+      });
+      $('#q-check').disabled = done || lm.some(function (j) { return j < 0; });
+    }
+    $$('[data-l]', host).forEach(function (b) {
+      b.onclick = function () { var i = +b.dataset.l; if (done || lock[i]) return; if (lm[i] >= 0) lm[i] = -1; else selL = selL === i ? -1 : i; paint(); };
+    });
+    $$('[data-r]', host).forEach(function (b) {
+      b.onclick = function () {
+        var j = +b.dataset.r; if (done) return;
+        var owner = lm.indexOf(j);
+        if (selL < 0) { if (owner >= 0 && !lock[owner]) { lm[owner] = -1; paint(); } else cb.msg('info', 'Tap a card on the left first.'); return; }
+        if (owner >= 0 && lock[owner]) return;
+        if (owner >= 0) lm[owner] = -1;
+        lm[selL] = j; selL = -1; paint();
+      };
+    });
+    setCheck('Check my matches', function () {
+      if (done) return;
+      var bad = [];
+      for (var i = 0; i < n; i++) if (!lock[i]) { if (q.pairs[ro[lm[i]]][1] === q.pairs[i][1]) lock[i] = true; else bad.push(i); }
+      if (!bad.length) { done = true; paint(); lockAll(host); $('#q-check').disabled = true; cb.right(); return; }
+      paint();
+      bad.forEach(function (i) { $('[data-l="' + i + '"]', host).classList.add('bad'); });
+      setTimeout(function () { bad.forEach(function (i) { lm[i] = -1; var b = $('[data-l="' + i + '"]', host); if (b) b.classList.remove('bad'); }); paint(); }, 750);
+      cb.wrong(bad.length === 1 ? 'One match is not right. Try again.' : bad.length + ' matches are not right. Try again.');
+    });
+    paint();
+  }
+
+  // ======================= DRAWING PAD =======================
+  var pad = { tool: 'pen', down: false, lx: 0, ly: 0, w: 0, open: false };
+  function padCtx() { return $('#padc').getContext('2d'); }
+  function padSize() {
+    var c = $('#padc'), w = Math.max(240, Math.floor($('#padarea').clientWidth)), h = 230, dpr = window.devicePixelRatio || 1;
+    if (pad.w === w) return;
+    var old = document.createElement('canvas'); old.width = c.width; old.height = c.height; old.getContext('2d').drawImage(c, 0, 0);
+    c.width = w * dpr; c.height = h * dpr; c.style.width = w + 'px'; c.style.height = h + 'px';
+    var g = c.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.drawImage(old, 0, 0); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.lineCap = 'round'; g.lineJoin = 'round';
+    pad.w = w;
+  }
+  function padPos(e) { var r = $('#padc').getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  function padReset(close) {
+    var c = $('#padc'), g = c.getContext('2d'); g.save(); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, c.width, c.height); g.restore();
+    if (close) { $('#padarea').hidden = true; pad.open = false; $('#pad-toggle').setAttribute('aria-expanded', 'false'); $('#pad-toggle').firstChild.textContent = '✎ '; }
+  }
+  function padInit() {
+    var c = $('#padc');
+    c.addEventListener('pointerdown', function (e) {
+      pad.down = true; var p = padPos(e); pad.lx = p[0]; pad.ly = p[1];
+      try { c.setPointerCapture(e.pointerId); } catch (x) {}
+      var g = padCtx();
+      if (pad.tool === 'dot') {
+        g.globalCompositeOperation = 'source-over'; g.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#e10600';
+        g.beginPath(); g.arc(p[0], p[1], 8, 0, 7); g.fill(); pad.down = false;
+      }
+    });
+    c.addEventListener('pointermove', function (e) {
+      if (!pad.down) return;
+      var p = padPos(e), g = padCtx();
+      g.globalCompositeOperation = pad.tool === 'erase' ? 'destination-out' : 'source-over';
+      g.strokeStyle = getComputedStyle(document.body).color; g.lineWidth = pad.tool === 'erase' ? 22 : 3.2;
+      g.beginPath(); g.moveTo(pad.lx, pad.ly); g.lineTo(p[0], p[1]); g.stroke(); pad.lx = p[0]; pad.ly = p[1];
+    });
+    ['pointerup', 'pointercancel'].forEach(function (ev) { c.addEventListener(ev, function () { pad.down = false; }); });
+    $('#pad-toggle').onclick = function () {
+      pad.open = !pad.open; $('#padarea').hidden = !pad.open; this.setAttribute('aria-expanded', String(pad.open));
+      this.firstChild.textContent = pad.open ? '✕ ' : '✎ ';
+      if (pad.open) { pad.w = 0; padSize(); }
+    };
+    $$('#padtools [data-tool]').forEach(function (b) {
+      b.onclick = function () { pad.tool = b.dataset.tool; $$('#padtools [data-tool]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); };
+    });
+    $('#pad-clear').onclick = function () { padReset(false); };
+    window.addEventListener('resize', function () { if (pad.open) padSize(); });
+  }
+  // ---------- sound ----------
+  var muted = false;
+  try { muted = JSON.parse(localStorage.getItem('dpg.muted') || 'false'); } catch (e) {}
+  var actx = null;
+  function unlock() {
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+    } catch (e) {}
+  }
+  function tone(f, t, dur, type, vol, f2) {
+    var o = actx.createOscillator(), g = actx.createGain();
+    o.type = type || 'sine'; o.frequency.setValueAtTime(f, t);
+    if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol || 0.15, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + dur + 0.03);
+  }
+  function sfx(kind) {
+    if (muted || !actx) return;
+    var t = actx.currentTime + 0.01;
+    if (kind === 'beep') tone(520, t, 0.18, 'square', 0.07);
+    else if (kind === 'go') tone(880, t, 0.5, 'square', 0.09);
+    else if (kind === 'bad') { tone(150, t, 0.28, 'sawtooth', 0.1, 90); }
+    else if (kind === 'ok') { tone(523, t, 0.14, 'triangle', 0.14); tone(659, t + 0.12, 0.14, 'triangle', 0.14); tone(784, t + 0.24, 0.3, 'triangle', 0.14); }
+    else if (kind === 'rev') tone(80, t, 0.9, 'sawtooth', 0.06, 340);
+    else if (kind === 'win') { [523, 659, 784, 1047, 784, 1047, 1319].forEach(function (f, i) { tone(f, t + i * 0.13, 0.4, 'triangle', 0.13); }); }
+  }
+  var muteBtn = $('#mute');
+  function renderMute() { muteBtn.textContent = muted ? 'Sound off' : 'Sound on'; muteBtn.setAttribute('aria-pressed', String(muted)); }
+  muteBtn.onclick = function () {
+    muted = !muted; renderMute(); unlock();
+    try { localStorage.setItem('dpg.muted', JSON.stringify(muted)); } catch (e) {}
+  };
+  renderMute();
+  document.addEventListener('pointerdown', unlock, { once: true });
+
+  var fullBtn = $('#full');
+  if (!document.fullscreenEnabled) fullBtn.hidden = true;
+  fullBtn.onclick = function () {
+    try {
+      var p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+      if (p && p.catch) p.catch(function () {});
+    } catch (e) {}
+  };
+
+  // ---------- theme ----------
+  var root = document.documentElement, tbtn = $('#theme');
+  function isDark() {
+    var t = root.getAttribute('data-theme');
+    return t ? t === 'dark' : !(window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches);
+  }
+  function paintTheme() {
+    tbtn.querySelector('.ico').textContent = isDark() ? '☀' : '☾';
+    $('#theme-t').textContent = isDark() ? 'Light' : 'Dark';
+  }
+  try { var savedTheme = localStorage.getItem('dpg.theme'); if (savedTheme) root.setAttribute('data-theme', savedTheme); } catch (e) {}
+  tbtn.onclick = function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('dpg.theme', next); } catch (e) {}
+    paintTheme();
+  };
+  paintTheme();
+
+  // ======================= THE GAME =======================
+  var CARS = [
+    { id: 'red', name: 'Red', c: '#e10600' }, { id: 'blue', name: 'Blue', c: '#2f8cff' }, { id: 'green', name: 'Green', c: '#1fc26b' },
+    { id: 'yellow', name: 'Yellow', c: '#ffd21f' }, { id: 'purple', name: 'Purple', c: '#a66bff' }
+  ];
+  var RIVALS = [{ name: 'Sultan', pace: 0.82 }, { name: 'Maitha', pace: 0.9 }, { name: 'Rashid', pace: 0.98 }];
+  var MODES = { mul: 'Multiplication', div: 'Division', both: 'Multiplication and division' };
+  var carSvg = '<span class="car" aria-hidden="true"><svg viewBox="0 0 120 40"><use href="#carsym"/></svg></span>';
+  var G = null, C = null, pick = 0, lastName = '', mode = 'both', len = 15;
+  try {
+    lastName = localStorage.getItem('dpq.name') || '';
+    var sc = parseInt(localStorage.getItem('dpq.car'), 10); if (sc >= 0 && sc < CARS.length) pick = sc;
+    mode = localStorage.getItem('dpq.mode') || 'both'; if (!MODES[mode]) mode = 'both';
+    len = parseInt(localStorage.getItem('dpq.len'), 10) || 15; if ([10, 15, 20, 99].indexOf(len) < 0) len = 15; mode = 'both';
+  } catch (e) {}
+  var V = { start: $('#view-start'), hud: $('#hud'), q: $('#view-q'), pager: $('#pager'), review: $('#view-review'), coach: $('#view-coach') };
+  function hideAll() { Object.keys(V).forEach(function (k) { V[k].hidden = true; }); $('#winner').hidden = true; $('#lights').hidden = true; }
+  function replay(el) { el.hidden = true; void el.offsetWidth; el.hidden = false; }
+
+  // ---------- start screen
+  function buildSwatches() {
+    $('#swatches').innerHTML = CARS.map(function (c, i) {
+      return '<button type="button" class="swatch" data-i="' + i + '" style="--c:' + c.c + '" aria-pressed="' + (i === pick) + '" aria-label="' + c.name + ' car">' + carSvg + '<span class="lbl">' + c.name + '</span></button>';
+    }).join('');
+    $$('#swatches .swatch').forEach(function (b) {
+      b.onclick = function () { pick = +b.dataset.i; $$('#swatches .swatch').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); sfx('beep'); };
+    });
+  }
+  function segs(sel, attr, get, set) {
+    $$(sel + ' button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(String(get()) === b.dataset[attr]));
+      b.onclick = function () { set(b.dataset[attr]); $$(sel + ' button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); }); sfx('beep'); };
+    });
+  }
+  function buildDrift() {
+    $('#drift').innerHTML = CARS.slice(0, 3).map(function (c, i) {
+      return '<span class="car" style="--c:' + c.c + ';--t:' + (6 + i * 1.7) + 's;--d:-' + (i * 2.3) + 's"><svg viewBox="0 0 120 40"><use href="#carsym"/></svg></span>';
+    }).join('');
+  }
+  function loadBoard() { try { var b = JSON.parse(localStorage.getItem('dpq.board') || '[]'); return Array.isArray(b) ? b : []; } catch (e) { return []; } }
+  function renderBoard(el, mark) {
+    var b = loadBoard();
+    if (!b.length) { el.innerHTML = '<li class="empty">No races yet. Be the first on the board.</li>'; return; }
+    el.innerHTML = b.map(function (r) {
+      return '<li' + (mark && r.ts === mark ? ' class="me"' : '') + '><span class="car" style="color:' + esc(r.c) + '"><svg viewBox="0 0 120 40"><use href="#carsym"/></svg></span><span class="nm">' + esc(r.name) + '</span><span class="pt">' + r.pts + '</span></li>';
+    }).join('');
+  }
+  function showStart() {
+    hideAll(); G = null; C = null; replay(V.start); $('#name').value = lastName; renderBoard($('#board'));
+  }
+  $('#start-form').onsubmit = function (e) {
+    e.preventDefault();
+    var name = $('#name').value.replace(/\s+/g, ' ').trim(), f = $('#name-field');
+    if (!name) {
+      f.classList.remove('bad'); void f.offsetWidth; f.classList.add('bad');
+      $('#name-err').textContent = 'Type your name to join the race.'; sfx('bad'); $('#name').focus(); return;
+    }
+    f.classList.remove('bad'); $('#name-err').textContent = ''; lastName = name;
+    try { localStorage.setItem('dpq.name', name); localStorage.setItem('dpq.car', String(pick)); localStorage.setItem('dpq.mode', mode); localStorage.setItem('dpq.len', String(len)); } catch (err) {}
+    unlock(); newRace(name, CARS[pick]);
+  };
+  $('#name').addEventListener('input', function () { $('#name-field').classList.remove('bad'); $('#name-err').textContent = ''; });
+
+  // ---------- race state, track and HUD
+  function newRace(name, car) {
+    var others = CARS.filter(function (c) { return c.id !== car.id; });
+    G = { name: name, car: car, mode: mode, qs: buildRace(mode, len), riv: RIVALS.map(function (r, i) { return { name: r.name, pace: r.pace, c: others[i].c, p: 0 }; }),
+      me: 0, pts: 0, streak: 0, best: 0, clean: 0, log: [], done: false, i: 0, t0: 0, wrongs: 0 };
+    hideAll(); V.hud.hidden = false; replay(V.hud);
+    $('#st-driver').style.setProperty('--c', car.c); $('#st-car').innerHTML = carSvg; $('#st-name').textContent = name;
+    shownPts = 0; $('#st-pts').textContent = '0';
+    buildLanes(); hud(); placeCars(); runLights(function () { startLap(0); });
+  }
+  function buildLanes() {
+    var rows = [{ name: G.name, c: G.car.c, me: true }].concat(G.riv.map(function (r) { return { name: r.name, c: r.c }; }));
+    $('#lanes').innerHTML = rows.map(function (r) {
+      return '<div class="lane' + (r.me ? ' me' : '') + '" style="--c:' + esc(r.c) + '"><span class="who">' + esc(r.name) + '</span><div class="run"><div class="racer" style="--p:0">' + carSvg + '</div></div></div>';
+    }).join('');
+  }
+  function raw() { return [G.me].concat(G.riv.map(function (r) { return r.p; })); }
+  function rank() { var r = raw(), n = 1; for (var i = 1; i < r.length; i++) if (r[i] > r[0]) n++; return n; }
+  function placeCars() {
+    var r = raw(), mx = Math.max.apply(null, [1].concat(r));
+    $$('#lanes .racer').forEach(function (el, i) { el.style.setProperty('--p', Math.min(1, r[i] / mx).toFixed(4)); el.classList.add('go'); setTimeout(function () { el.classList.remove('go'); }, 1700); });
+    $('#st-pos').textContent = 'P' + rank();
+  }
+  var shownPts = 0;
+  function bump(id) { var w = $(id); w.classList.remove('bump'); void w.offsetWidth; w.classList.add('bump'); }
+  function hud() {
+    $('#st-lap').textContent = Math.min(G.i + 1, G.qs.length) + '/' + G.qs.length;
+    $('#st-streak').textContent = G.streak; $('#st-streak-wrap').classList.toggle('hot', G.streak >= 2);
+    var from = shownPts, to = G.pts, t0 = performance.now(), el = $('#st-pts'); shownPts = to;
+    if (reduce || from === to) { el.textContent = to; return; }
+    (function step(now) { var k = Math.min(1, (now - t0) / 700); el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(step); })(t0);
+  }
+  function gain(text) { var s = document.createElement('span'); s.className = 'gain'; s.textContent = text; $('#st-pts-wrap').appendChild(s); setTimeout(function () { s.remove(); }, 1400); }
+
+  var lightTimers = [];
+  function runLights(done) {
+    var ov = $('#lights'), gantry = $('#gantry'), bulbs = $$('.bulb', gantry), say = $('#say'), over = false;
+    ov.hidden = false; gantry.classList.remove('go'); bulbs.forEach(function (b) { b.classList.remove('on'); }); say.textContent = 'Get ready';
+    function finish() { if (over) return; over = true; lightTimers.forEach(clearTimeout); lightTimers = []; ov.hidden = true; ov.onclick = null; done(); }
+    bulbs.forEach(function (b, i) { lightTimers.push(setTimeout(function () { b.classList.add('on'); sfx('beep'); }, 500 + i * 600)); });
+    lightTimers.push(setTimeout(function () { gantry.classList.add('go'); say.textContent = 'Go!'; sfx('go'); sfx('rev'); }, 500 + bulbs.length * 600 + 500));
+    lightTimers.push(setTimeout(finish, 500 + bulbs.length * 600 + 1400));
+    ov.onclick = finish;
+  }
+
+  // ---------- laps
+  var TYPE_LABEL = { mcq: 'Multiple choice', multi: 'Choose all that apply', fill: 'Fill in the blanks', match: 'Matching', draw: 'Draw it' };
+  var PAR = { mcq: 30, multi: 45, fill: 45, match: 60, draw: 120 };
+  var qDone = false;
+  function setMsg(kind, text) { var m = $('#q-msg'); m.dataset.kind = kind; m.textContent = text; }
+  function openQuestion(q, kick, cbs) {
+    qDone = false; replay(V.q);
+    $('#q-kicker').textContent = kick;
+    $('#q-type').textContent = TYPE_LABEL[q.t] + (q.w ? ' · Word problem' : '');
+    padReset(true);
+    setMsg('info', q.t === 'draw' ? 'Use the tools to draw your answer, then press Check my drawing.' : q.t === 'match' ? 'Tap a card on the left, then its match on the right.' : q.t === 'fill' ? 'Pick a choice from the top, then tap a blank.' : q.t === 'multi' ? 'Choose every correct answer, then press Check.' : 'Think it through. Press Draw to check your idea first.');
+    renderQuestion(q, cbs);
+  }
+  function startLap(i) {
+    G.i = i; G.t0 = Date.now(); G.wrongs = 0;
+    var q = G.qs[i], s = SK[q.sk];
+    G.log[i] = { q: q, sk: q.sk, wrongs: 0 };
+    V.q.hidden = false; V.pager.hidden = false;
+    openQuestion(q, 'Lap ' + (i + 1) + ' of ' + G.qs.length + ' · ' + s.less + ' · ' + s.name, {
+      right: lapRight, wrong: lapWrong, msg: setMsg
+    });
+    $('#next').disabled = true; $('#next').classList.remove('attn'); $('#next').textContent = i === G.qs.length - 1 ? 'Finish race' : 'Next lap';
+    $('#pos').textContent = 'Lap ' + (i + 1) + ' of ' + G.qs.length; hud();
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); announce('Lap ' + (i + 1) + ' of ' + G.qs.length);
+  }
+  function shake() { V.q.classList.remove('shake'); void V.q.offsetWidth; V.q.classList.add('shake'); setTimeout(function () { V.q.classList.remove('shake'); }, 450); }
+  function lapWrong(text) {
+    if (qDone) return;
+    G.wrongs++; G.log[G.i].wrongs++; sfx('bad'); shake();
+    var steps = SK[G.qs[G.i].sk].steps;
+    setMsg('hint', (text || 'Not quite.') + ' Tip: ' + steps[Math.min(G.wrongs - 1, steps.length - 1)]);
+  }
+  function lapRight() {
+    if (qDone) return; qDone = true;
+    var q = G.qs[G.i], w = G.wrongs, secs = (Date.now() - G.t0) / 1000, clean = w === 0, fast = clean && secs <= (PAR[q.t] || 40);
+    var base = Math.max(20, 100 - 20 * w);
+    if (clean) { G.streak++; G.clean++; G.best = Math.max(G.best, G.streak); } else G.streak = 0;
+    var pts = base + (fast ? 20 : 0) + (clean ? 5 * G.streak : 0); G.pts += pts;
+    var scl = 10 / G.qs.length;
+    G.me += (w >= 2 ? 0.075 : w === 1 ? 0.09 : fast ? 0.115 : 0.105) * scl;
+    G.riv.forEach(function (r) { r.p += r.pace / G.qs.length * 1.0 + (Math.random() - 0.5) * 0.024 * scl; });
+    hud(); placeCars(); bump('#st-pts-wrap'); gain('+' + pts); sfx('ok'); sfx('rev');
+    setMsg('ok', 'Yes! ' + (q.why || ''));
+    burst($('#q-msg'));
+    $('#pos').textContent = 'Lap ' + (G.i + 1) + ' done · +' + pts + ' points.' + (fast ? ' Speed bonus!' : '');
+    $('#next').disabled = false; $('#next').classList.add('attn');
+    announce('Correct. ' + pts + ' points.');
+  }
+  $('#next').onclick = function () {
+    unlock();
+    if (C) return coachNext();
+    if (G.i < G.qs.length - 1) startLap(G.i + 1); else finishRace();
+  };
+  $('#q-check').onclick = function () { if (Q.checkFn) Q.checkFn(); };
+
+  // ---------- finish
+  function finishRace() {
+    G.done = true;
+    var r = raw(), mx = Math.max.apply(null, [1].concat(r)), pos = rank();
+    var rows = [{ name: G.name, c: G.car.c, v: r[0], me: true }].concat(G.riv.map(function (x, i) { return { name: x.name, c: x.c, v: r[i + 1] }; }));
+    rows.sort(function (a, b) { return b.v - a.v || (b.me ? 1 : 0) - (a.me ? 1 : 0); });
+    var heads = ['Champion!', 'Great drive!', 'On the podium!', 'Keep practising!'];
+    var subs = [G.name + ' wins the Grand Prix.', G.name + ' takes second place.', G.name + ' finishes third.', G.name + ' crosses the line in fourth.'];
+    $('#w-pos').textContent = 'P' + pos; $('#w-title').textContent = heads[pos - 1];
+    $('#w-sub').textContent = subs[pos - 1] + ' ' + G.pts + ' points in total.';
+    $('#w-pts').textContent = G.pts; $('#w-ft').textContent = G.clean + '/' + G.qs.length; $('#w-bs').textContent = G.best;
+    $('#w-list').innerHTML = rows.map(function (x, i) {
+      return '<li class="' + (x.me ? 'me' : '') + '" style="--c:' + esc(x.c) + '"><span class="rk">' + (i + 1) + '</span><span class="nm">' + esc(x.name) + '</span><span class="w-bar"><span style="width:' + Math.round(Math.min(1, x.v / mx) * 100) + '%"></span></span></li>';
+    }).join('');
+    var ts = Date.now(), b = loadBoard(); b.push({ name: G.name, pts: G.pts, c: G.car.c, pos: pos, ts: ts });
+    b.sort(function (a, c) { return c.pts - a.pts || a.ts - c.ts; }); b = b.slice(0, 5);
+    try { localStorage.setItem('dpq.board', JSON.stringify(b)); } catch (e) {}
+    renderBoard($('#w-board'), ts);
+    var conf = '';
+    if (pos <= 3 && !reduce) { var cols = ['#f4f6fa', '#0b0d11', '#e10600', '#ffd21f']; for (var i = 0; i < 70; i++) conf += '<span style="left:' + (Math.random() * 100).toFixed(1) + '%;--cc:' + cols[i % 4] + ';--d:' + (2.4 + Math.random() * 2).toFixed(2) + 's;--dl:' + (Math.random() * 1.2).toFixed(2) + 's"></span>'; }
+    $('#w-confetti').innerHTML = conf; $('#winner').hidden = false; sfx('win');
+    var missed = G.log.filter(function (l) { return l.wrongs > 0; }).length;
+    $('#w-review').textContent = missed ? 'Review my ' + missed + ' missed ' + (missed === 1 ? 'question' : 'questions') : 'See my skills report';
+    announce('Race finished. You came ' + pos + '. ' + G.pts + ' points.');
+    setTimeout(function () { try { $('#w-review').focus(); } catch (e) {} }, 50);
+  }
+  $('#w-again').onclick = function () { $('#winner').hidden = true; newRace(G.name, G.car); };
+  $('#w-new').onclick = function () { showStart(); };
+  $('#w-review').onclick = function () { $('#winner').hidden = true; showReview(); };
+
+  function burst(el) {
+    if (reduce || !el || !el.animate) return;
+    var r = el.getBoundingClientRect(), cx = r.left + Math.min(r.width, 360) / 2, cy = Math.max(60, Math.min(r.top + r.height / 2, innerHeight - 60)), cols = ['#f4f6fa', '#0b0d11', '#e10600', '#ffd21f'];
+    for (var i = 0; i < 28; i++) {
+      var s = document.createElement('span'); s.className = 'spark'; s.style.left = cx + 'px'; s.style.top = cy + 'px'; s.style.background = cols[i % 4];
+      if (i % 4 === 1) s.style.outline = '1px solid #f4f6fa';
+      document.body.appendChild(s);
+      var a = Math.random() * Math.PI * 2, d = 70 + Math.random() * 140;
+      var an = s.animate([{ transform: 'translate(0,0) scale(1) rotate(0)', opacity: 1 }, { transform: 'translate(' + Math.cos(a) * d + 'px,' + (Math.sin(a) * d - 40) + 'px) scale(.3) rotate(' + (Math.random() * 540 - 270) + 'deg)', opacity: 0 }], { duration: 800 + Math.random() * 500, easing: 'cubic-bezier(.2,.8,.2,1)' });
+      an.onfinish = (function (n) { return function () { n.remove(); }; })(s);
+    }
+  }
+  // ======================= REVIEW REPORT =======================
+  function answerText(q) {
+    if (q.t === 'mcq') return q.opts.filter(function (o) { return o.ok; }).map(function (o) { return o.h; }).join('');
+    if (q.t === 'multi') return q.opts.filter(function (o) { return o.ok; }).map(function (o) { return '<span class="ans-item">' + o.h + '</span>'; }).join('');
+    if (q.t === 'fill') return '<span class="ans-fill">' + q.text.replace(/\{(\d+)\}/g, function (m, k) { return '<b>' + q.ans[+k] + '</b>'; }) + '</span>';
+    if (q.t === 'draw') return q.model + '<span>' + q.compare + '</span>';
+    return q.pairs.map(function (p) { return '<span class="ans-item">' + p[0] + ' &rarr; ' + p[1] + '</span>'; }).join('');
+  }
+  function skillStats() {
+    var by = {};
+    G.log.forEach(function (l) { if (!l) return; var s = by[l.sk] = by[l.sk] || { n: 0, clean: 0, missed: [] }; s.n++; if (!l.wrongs) s.clean++; else s.missed.push(l); });
+    return by;
+  }
+  function showReview() {
+    hideAll(); V.review.hidden = false; replay(V.review); window.scrollTo(0, 0);
+    var by = skillStats(), keys = SK_ORDER.filter(function (k) { return by[k]; });
+    var weak = keys.filter(function (k) { return by[k].clean < by[k].n; }).sort(function (a, b) { return by[a].clean / by[a].n - by[b].clean / by[b].n; });
+    $('#rv-title').textContent = weak.length ? 'Your pit stop report' : 'Perfect race!';
+    $('#rv-sub').textContent = weak.length ? G.name + ', here is what to work on before the quiz.' : G.name + ', you got every question right on the first try.';
+    $('#rv-skills').innerHTML = keys.map(function (k) {
+      var s = by[k], pct = Math.round(s.clean / s.n * 100), cls = pct >= 80 ? 'strong' : pct >= 50 ? 'ok' : 'weak', word = pct >= 80 ? 'Strong' : pct >= 50 ? 'Getting there' : 'Needs practice';
+      return '<li class="sk ' + cls + '"><div class="sn"><b>' + SK[k].name + '</b><small>' + SK[k].less + '</small></div><div class="sb"><span style="width:' + Math.max(pct, 4) + '%"></span></div><div class="ss"><b>' + s.clean + '/' + s.n + '</b><small>' + word + '</small></div></li>';
+    }).join('');
+    var miss = G.log.filter(function (l) { return l && l.wrongs > 0; });
+    $('#rv-missed-h').hidden = !miss.length;
+    $('#rv-missed').innerHTML = miss.map(function (l) {
+      var q = l.q;
+      return '<article class="miss"><div class="mh"><span class="tag" style="--c:' + SK[q.sk].col + '">' + SK[q.sk].less + ' · ' + SK[q.sk].name + '</span><small>' + l.wrongs + (l.wrongs === 1 ? ' wrong try' : ' wrong tries') + '</small></div><p class="mq">' + q.q + '</p>' + (q.vis ? '<div class="mv">' + q.vis + '</div>' : '') + '<div class="ma"><small>Correct answer</small><div>' + answerText(q) + '</div></div><p class="mw">' + (q.why || '') + '</p></article>';
+    }).join('');
+    $('#rv-practice').hidden = !weak.length;
+    $('#rv-practice').textContent = 'Start guided practice (' + weak.length + (weak.length === 1 ? ' skill)' : ' skills)');
+    $('#rv-practice').onclick = function () { startCoach(weak, by); };
+    $('#rv-again').onclick = function () { newRace(G.name, G.car); };
+    $('#rv-new').onclick = function () { showStart(); };
+    V.pager.hidden = true;
+  }
+
+  // ======================= GUIDED PRACTICE =======================
+  function startCoach(skills, by) {
+    C = { skills: skills, si: 0, st: 0, by: by, steps: [], hints: 0, cur: null };
+    coachPlan(); coachShow();
+  }
+  function coachPlan() {
+    var k = C.skills[C.si], m = G.mode, missed = (C.by[k] && C.by[k].missed[0]) ? C.by[k].missed[0].q : null;
+    var retry = missed || genQ(k, m);
+    C.steps = [{ kind: 'idea' }, { kind: 'q', q: genQ(k, m), guided: true }, { kind: 'q', q: retry, guided: false, retry: !!missed }, { kind: 'q', q: genQ(k, m), guided: false }];
+    C.st = 0;
+  }
+  function coachShow() {
+    var k = C.skills[C.si], s = SK[k], st = C.steps[C.st], last = C.st === C.steps.length - 1, lastSkill = C.si === C.skills.length - 1;
+    hideAll(); V.pager.hidden = false; $('#next').classList.remove('attn');
+    $('#pos').textContent = 'Pit stop · skill ' + (C.si + 1) + ' of ' + C.skills.length;
+    window.scrollTo(0, 0);
+    if (st.kind === 'idea') {
+      var eg = s.eg();
+      V.coach.hidden = false; replay(V.coach);
+      $('#co-kicker').textContent = 'Pit stop · ' + s.less;
+      $('#co-title').textContent = s.name; $('#co-idea').textContent = s.idea;
+      $('#co-eg').innerHTML = '<div class="egv">' + eg.vis + '</div><p class="egq">' + eg.eq + '</p>' + (eg.line ? '<p class="egl">' + eg.line + '</p>' : '');
+      $('#co-steps').innerHTML = s.steps.map(function (t) { return '<li>' + t + '</li>'; }).join('');
+      $('#co-done').hidden = true; $('#co-body').hidden = false;
+      $('#next').disabled = false; $('#next').textContent = 'Let’s try one';
+      return;
+    }
+    var q = st.q; C.cur = st; C.hints = 0;
+    V.q.hidden = false;
+    $('#coachbox').hidden = !st.guided; $('#co-hints').innerHTML = '';
+    var hl = q.hints || s.steps;
+    $('#co-hint-btn').hidden = !st.guided; $('#co-hint-btn').disabled = false;
+    $('#co-hint-btn').onclick = function () { revealHint(hl); };
+    openQuestion(q, 'Pit stop · ' + s.name + ' · ' + (st.guided ? 'Guided question' : st.retry ? 'Try your missed question again' : 'Your turn'), { right: coachRight, wrong: coachWrong, msg: setMsg });
+    $('#next').disabled = true; $('#next').textContent = last ? (lastSkill ? 'Finish pit stop' : 'Next skill') : 'Next';
+    if (st.guided) setMsg('info', 'Stuck? Press Give me a hint. Each hint helps a little more.');
+  }
+  function revealHint(hl) {
+    if (C.hints >= hl.length) return;
+    var li = document.createElement('li'); li.textContent = hl[C.hints++]; $('#co-hints').appendChild(li);
+    if (C.hints >= hl.length) $('#co-hint-btn').disabled = true;
+    sfx('beep');
+  }
+  function coachWrong(text) {
+    if (qDone) return; sfx('bad'); shake();
+    setMsg('hint', (text || 'Not quite.') + ' Look at the hints and try again.');
+    if (C.cur && C.cur.guided) { var hl = C.cur.q.hints || SK[C.skills[C.si]].steps; revealHint(hl); }
+  }
+  function coachRight() {
+    if (qDone) return; qDone = true; sfx('ok'); burst($('#q-msg'));
+    setMsg('ok', 'Yes! ' + (C.cur.q.why || ''));
+    $('#next').disabled = false; $('#next').classList.add('attn');
+  }
+  function coachNext() {
+    if (C.st < C.steps.length - 1) { C.st++; return coachShow(); }
+    if (C.si < C.skills.length - 1) { C.si++; coachPlan(); return coachShow(); }
+    // all done
+    hideAll(); V.coach.hidden = false; replay(V.coach); V.pager.hidden = true;
+    $('#co-kicker').textContent = 'Pit stop complete'; $('#co-title').textContent = 'Back on track, ' + G.name + '!';
+    $('#co-body').hidden = true; $('#co-done').hidden = false; sfx('win');
+    $('#co-done-skills').innerHTML = C.skills.map(function (k) { return '<li>' + SK[k].name + '</li>'; }).join('');
+    $('#co-again').onclick = function () { C = null; newRace(G.name, G.car); };
+    $('#co-report').onclick = function () { C = null; showReview(); };
+    $('#co-new').onclick = function () { C = null; showStart(); };
+  }
+
+  // ---------- boot
+  padInit(); buildSwatches(); buildDrift();
+  mode = 'both';
+  segs('#lens', 'n', function () { return len; }, function (v) { len = +v; });
+  var homeBtn = $('#home'), homeTimer = 0;
+  function syncHome() { homeBtn.hidden = !V.start.hidden; }
+  new MutationObserver(syncHome).observe(V.start, { attributes: true, attributeFilter: ['hidden'] });
+  homeBtn.onclick = function () {
+    var racing = G && !G.done && !C && !V.q.hidden;
+    if (racing && !homeBtn.classList.contains('arm')) { homeBtn.classList.add('arm'); homeBtn.textContent = 'Leave the race?'; clearTimeout(homeTimer); homeTimer = setTimeout(function () { homeBtn.classList.remove('arm'); homeBtn.textContent = 'Home'; }, 3000); return; }
+    clearTimeout(homeTimer); homeBtn.classList.remove('arm'); homeBtn.textContent = 'Home'; showStart();
+  };
+  hideAll(); V.start.hidden = false; $('#name').value = lastName; renderBoard($('#board'));
+
+})();
+</script>
+
+</body></html>
